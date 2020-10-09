@@ -10,11 +10,7 @@
 
     <title>@yield('title') - {{ config('app.name', 'Shaikh Al Amin') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
     <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900%7cTeko:300,400,500,600,700&display=swap" rel="stylesheet" />
 
     <!-- Styles -->
@@ -66,7 +62,7 @@
             @yield('content')
         </main>
     </div>
-    <script src=""></script>
+    <script src="{{ asset('js/app.js') }}" defer></script>
 </body>
 
 </html>

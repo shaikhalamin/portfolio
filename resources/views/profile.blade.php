@@ -1,25 +1,26 @@
 @extends('layouts.portfolio')
 
 @section('content')
-
-<div class="jumbotron" id="particles-js" style="border-radius: 0px;background:#000;">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <h1 class="text-white"><b><span class="i-am">I'm</span> Shaikh Al Amin</b></h1>
-                <h6 class="text-white"><b>Senior Software Engineer | Frontend Specialist</b></h6>
-                <div class="row">
-                    <div class="col-md-6 offset-md-3 mb-3 mt-2"><a href="{{ asset('assets/docs/SHAIKH_AL_AMIN.pdf') }}" class="btn btn-sm btn-outline-info text-white" target="_blank" rel="noopener noreferrer" download style="border-color: #17a2b8;">Download CV</a><button type="button" class="btn btn-sm btn-outline-danger text-white ml-2">Hire Me</button></div>
+<header>
+    <div class="jumbotron" id="particles-js" style="border-radius: 0px;background:#000;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h1 class="text-white"><b><span class="i-am">I'm</span> Shaikh Al Amin</b></h1>
+                    <h2 class="text-white"><b>Senior Software Engineer | Frontend Specialist</b></h2>
+                    <div class="row">
+                        <div class="col-md-6 offset-md-3 mb-3 mt-2"><a href="{{ asset('assets/docs/SHAIKH_AL_AMIN.pdf') }}" class="btn btn-sm btn-outline-info text-white" target="_blank" rel="noopener noreferrer" download style="border-color: #17a2b8;">Download CV</a><button type="button" class="btn btn-sm btn-outline-danger text-white ml-2">Hire Me</button></div>
+                    </div>
+                    <ul class="nav justify-content-center">
+                        <li class="nav-item"><a class="btn btn-sm" href="https://www.linkedin.com/in/shaikh-al-amin/"><i class="fa fa-linkedin-square" aria-hidden="true" style="font-size: 25px; color: rgb(255, 255, 255);"></i></a></li>
+                        <li class="nav-item"><a class="btn btn-sm" href="https://github.com/shaikhalamin"><i class="fa fa-github-square" aria-hidden="true" style="font-size: 25px; color: rgb(255, 255, 255);"></i></a></li>
+                        <li class="nav-item"><a class="btn btn-sm" href="https://twitter.com/shaikhalamin015"><i class="fa fa-twitter-square" aria-hidden="true" style="font-size: 25px; color: rgb(255, 255, 255);"></i></a></li>
+                    </ul>
                 </div>
-                <ul class="nav justify-content-center">
-                    <li class="nav-item"><a class="btn btn-sm" href="https://www.linkedin.com/in/shaikh-al-amin/"><i class="fa fa-linkedin-square" aria-hidden="true" style="font-size: 25px; color: rgb(255, 255, 255);"></i></a></li>
-                    <li class="nav-item"><a class="btn btn-sm" href="https://github.com/shaikhalamin"><i class="fa fa-github-square" aria-hidden="true" style="font-size: 25px; color: rgb(255, 255, 255);"></i></a></li>
-                    <li class="nav-item"><a class="btn btn-sm" href="https://twitter.com/shaikhalamin015"><i class="fa fa-twitter-square" aria-hidden="true" style="font-size: 25px; color: rgb(255, 255, 255);"></i></a></li>
-                </ul>
             </div>
         </div>
     </div>
-</div>
+</header>
 
 <section class="">
     <div class="container mt-5 mb-3">

@@ -2,19 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Profile;
+use App\Degree;
 use Illuminate\Http\Request;
 
-class ProfileController extends Controller
+class DegreeController extends Controller
 {
-
-    public function __construct()
-    {
-        // $this->middleware('auth');
-        $this->middleware('auth', ['except' => ['index']]);
-    }
-
-
     /**
      * Display a listing of the resource.
      *
@@ -22,13 +14,7 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return view('profile');
-    }
-
-    public function indexAdmin()
-    {
-
-        return view('admin.profile.index');
+        //
     }
 
     /**
@@ -38,7 +24,7 @@ class ProfileController extends Controller
      */
     public function create()
     {
-        return view('admin.profile.create');
+        //
     }
 
     /**
@@ -49,16 +35,16 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Profile  $profile
+     * @param  \App\Degree  $degree
      * @return \Illuminate\Http\Response
      */
-    public function show(Profile $profile)
+    public function show(Degree $degree)
     {
         //
     }
@@ -66,10 +52,10 @@ class ProfileController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Profile  $profile
+     * @param  \App\Degree  $degree
      * @return \Illuminate\Http\Response
      */
-    public function edit(Profile $profile)
+    public function edit(Degree $degree)
     {
         //
     }
@@ -78,10 +64,10 @@ class ProfileController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Profile  $profile
+     * @param  \App\Degree  $degree
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Profile $profile)
+    public function update(Request $request, Degree $degree)
     {
         //
     }
@@ -89,10 +75,10 @@ class ProfileController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Profile  $profile
+     * @param  \App\Degree  $degree
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Profile $profile)
+    public function destroy(Degree $degree)
     {
         //
     }
