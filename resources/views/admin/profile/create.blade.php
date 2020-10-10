@@ -2,135 +2,209 @@
 
 @section('content')
 <section class="">
-    <div class="card">
-        <h5 class="text-justify mt-2 ml-3 text-uppercase">Add Profile Information</h5>
-        <div class="card-body mt-2">
-            <form method="POST" action="{{ route('admin.profile.save') }}" enctype="multipart/form-data">
-                @csrf
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="full_name">Full Name</label>
-                        <input type="text" name="full_name" class="form-control" id="full_name">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="cv_name">CV Name</label>
-                        <input type="text" name="cv_name" class="form-control" id="cv_name">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="email">Email</label>
-                        <input type="email" name="email" class="form-control" id="email">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="phone">Phone</label>
-                        <input type="text" name="phone" class="form-control" id="phone">
-                    </div>
-                </div>
+    <div class="row">
+        <div class="col-md-8 ">
+            <div class="card">
+                <h5 class="text-center mt-2 mb-3 text-uppercase"><b>Add Profile Information</b></h5>
+                <div class="card-body mt-2">
+                    <form method="POST" action="{{ route('admin.profile.save') }}" enctype="multipart/form-data">
+                        @csrf
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="full_name" class="font-weight-bold">Full Name</label>
+                                <input type="text" name="full_name" value="{{ old('full_name') }}" class="form-control @error('full_name') is-invalid @enderror " id="full_name">
+                                @error('full_name')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
 
-                <div class="form-row">
-                    <div class="form-group col-md-4">
-                        <label for="city">City</label>
-                        <input type="text" name="city" class="form-control" id="city">
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="country">Country</label>
-                        <input type="text" name="country" class="form-control" id="country">
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="postal_code">Postal code</label>
-                        <input type="text" name="postal_code" class="form-control" id="postal_code">
-                    </div>
-                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="cv_name" class="font-weight-bold">CV Name</label>
+                                <input type="text" name="cv_name" value="{{ old('cv_name') }}" class="form-control @error('cv_name') is-invalid @enderror " id="cv_name">
+                                @error('cv_name')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="email" class="font-weight-bold">Email</label>
+                                <input type="email" name="email" value="{{ old('email') }}" class="form-control @error('email') is-invalid @enderror " id="email">
+                                @error('email')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="phone" class="font-weight-bold">Phone</label>
+                                <input type="text" name="phone" value="{{ old('phone') }}" class="form-control @error('phone') is-invalid @enderror " id="phone">
+                                @error('phone')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
 
-                <div class="form-row">
-                    <div class="form-group col-md-4">
-                        <label for="date_of_birth">Date of birth</label>
-                        <input type="text" name="date_of_birth" class="form-control" id="date_of_birth">
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="cityzenship">Cityzenship</label>
-                        <input type="text" name="cityzenship" class="form-control" id="cityzenship">
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="maritial_status">Maritial Status</label>
-                        <input type="text" name="maritial_status" class="form-control" id="maritial_status">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="designation">Designation</label>
-                        <input type="text" name="designation" class="form-control" id="designation">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="specialized_at">Specialized At</label>
-                        <input type="text" name="specialized_at" class="form-control" id="specialized_at">
-                    </div>
-                </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="city" class="font-weight-bold">City</label>
+                                <input type="text" name="city" value="{{ old('city') }}" class="form-control @error('city') is-invalid @enderror " id="city">
+                                @error('city')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="country">Country</label>
+                                <input type="text" name="country" value="{{ old('country') }}" class="form-control @error('country') is-invalid @enderror " id="country">
+                                @error('country')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="postal_code">Postal code</label>
+                                <input type="text" name="postal_code" value="{{ old('postal_code') }}" class="form-control @error('postal_code') is-invalid @enderror " id="postal_code">
+                                @error('postal_code')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
 
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="picture_cover">Picture Cover</label>
-                        <input type="text" name="picture_cover" class="form-control" id="picture_cover">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="picture_about">Picture About</label>
-                        <input type="text" name="picture_about" class="form-control" id="picture_about">
-                    </div>
-                </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="date_of_birth">Date of birth</label>
+                                <input type="text" name="date_of_birth" value="{{ old('date_of_birth') }}" class="form-control @error('date_of_birth') is-invalid @enderror " id="date_of_birth">
+                                @error('date_of_birth')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="cityzenship">Cityzenship</label>
+                                <input type="text" name="cityzenship" value="{{ old('cityzenship') }}" class="form-control @error('cityzenship') is-invalid @enderror " id="cityzenship">
+                                @error('cityzenship')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="maritial_status">Maritial Status</label>
+                                <input type="text" name="maritial_status" value="{{ old('maritial_status') }}" class="form-control @error('maritial_status') is-invalid @enderror " id="maritial_status">
+                                @error('maritial_status')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="designation">Designation</label>
+                                <input type="text" name="designation" value="{{ old('designation') }}" class="form-control @error('designation') is-invalid @enderror " id="designation">
+                                @error('designation')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="specialized_at">Specialized At</label>
+                                <input type="text" name="specialized_at" value="{{ old('specialized_at') }}" class="form-control @error('specialized_at') is-invalid @enderror " id="specialized_at">
+                                @error('specialized_at')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
 
-                <div class="form-row">
-                    <div class="form-group col-md-4">
-                        <label for="linkedin_profile_path">Linkedin Profile</label>
-                        <input type="text" name="linkedin_profile_path" class="form-control" id="linkedin_profile_path">
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="github_profile_path">Github Profile</label>
-                        <input type="text" name="github_profile_path" class="form-control" id="github_profile_path">
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="twitter_profile_path">Twitter profile</label>
-                        <input type="text" name="twitter_profile_path" class="form-control" id="twitter_profile_path">
-                    </div>
-                </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="picture_cover">Picture Cover</label>
+                                <input type="file" name="picture_cover" value="{{ old('picture_cover') }}" class="form-control @error('picture_cover') is-invalid @enderror " id="picture_cover">
+                                @error('picture_cover')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="picture_about">Picture About</label>
+                                <input type="file" name="picture_about" value="{{ old('picture_about') }}" class="form-control @error('picture_about') is-invalid @enderror " id="picture_about">
+                                @error('picture_about')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
 
-                <div class="form-row">
-                    <div class="form-group col-md-12">
-                        <label for="about_info">About Info</label>
-                        <textarea name="about_info" class="form-control" id="about_info" rows="3"></textarea>
-                    </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="linkedin_profile_path">Linkedin Profile</label>
+                                <input type="text" name="linkedin_profile_path" value="{{ old('linkedin_profile_path') }}" class="form-control @error('linkedin_profile_path') is-invalid @enderror " id="linkedin_profile_path">
+                                @error('linkedin_profile_path')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="github_profile_path">Github Profile</label>
+                                <input type="text" name="github_profile_path" value="{{ old('github_profile_path') }}" class="form-control @error('github_profile_path') is-invalid @enderror " id="github_profile_path">
+                                @error('github_profile_path')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="twitter_profile_path">Twitter profile</label>
+                                <input type="text" name="twitter_profile_path" value="{{ old('twitter_profile_path') }}" class="form-control @error('twitter_profile_path') is-invalid @enderror " id="twitter_profile_path">
+                                @error('twitter_profile_path')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <label for="about_info">About Info</label>
+                                <textarea name="about_info" value="{{ old('about_info') }}" class="form-control @error('about_info') is-invalid @enderror " id="about_info" rows="3">
+                                {{ old('about_info') }}
+                                </textarea>
+                                @error('about_info')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="profile_title">Profile Title</label>
+                                <input type="text" name="profile_title" value="{{ old('profile_title') }}" class="form-control @error('profile_title') is-invalid @enderror " id="profile_title">
+                                @error('profile_title')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="profile_meta">Profile Meta</label>
+                                <input type="text" name="profile_meta" value="{{ old('profile_meta') }}" class="form-control @error('profile_meta') is-invalid @enderror " id="profile_meta">
+                                @error('profile_meta')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="profile_meta_descriptions">Profile Meta Descriptions</label>
+                                <input type="text" name="profile_meta_descriptions" value="{{ old('profile_meta_descriptions') }}" class="form-control @error('profile_meta_descriptions') is-invalid @enderror " id="profile_meta_descriptions">
+                                @error('profile_meta_descriptions')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="smo_image">Smo Image</label>
+                                <input type="file" name="smo_image" value="{{ old('smo_image') }}" class="form-control @error('smo_image') is-invalid @enderror " id="smo_image">
+                                @error('smo_image')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-row float-right">
+                            <a href="{{ route('admin.profile.index') }}" class="btn btn-sm btn-outline-danger mr-2">Cancel</a>
+                            <button type="submit" class="btn btn-sm btn-outline-info ">Submit</button>
+                        </div>
+                    </form>
 
                 </div>
-
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="profile_title">Profile Title</label>
-                        <input type="text" name="profile_title" class="form-control" id="profile_title">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="profile_meta">Profile Meta</label>
-                        <input type="text" name="profile_meta" class="form-control" id="profile_meta">
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="profile_meta_descriptions">Profile Meta Descriptions</label>
-                        <input type="text" name="profile_meta_descriptions" class="form-control" id="profile_meta_descriptions">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="smo_image">smo_image</label>
-                        <input type="text" name="smo_image" class="form-control" id="smo_image">
-                    </div>
-                </div>
-                <div class="form-row float-right">
-                    <a href="{{ route('admin.profile.index') }}" class="btn btn-sm btn-outline-danger mr-2">Cancel</a>
-                    <button type="submit" class="btn btn-sm btn-outline-info ">Submit</button>
-                </div>
-            </form>
-
+            </div>
         </div>
     </div>
+
 
 </section>
 @endsection

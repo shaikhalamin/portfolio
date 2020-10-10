@@ -4,8 +4,14 @@
 <section class="">
     <div class="row">
         <div class="col-md-12">
-            <h4>Profiles</h4>
-            <a href="{{ route('admin.profile.create') }}" class="btn btn-sm btn-info">Create profile</a>
+            @if (session('profile_created'))
+            <div class="alert alert-success">
+                {{ session('profile_created') }}
+            </div>
+            @endif
+
+            <h4 class="mt-2 mb-2">Profiles</h4>
+            <a href="{{ route('admin.profile.create') }}" class="btn btn-sm btn-primary text-white">Create profile</a>
         </div>
     </div>
     <div class="row">
@@ -13,19 +19,27 @@
             <table class="table table-hover border">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
+                        <th scope="col">Full Name</th>
+                        <th scope="col">Designation</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">City</th>
+                        <th scope="col">Country</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach($profiles as $key=>$profile)
                     <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
+                        <td>{{ $profile->full_name }} </td>
+                        <td>{{ $profile->designation }} </td>
+                        <td>{{ $profile->email }} </td>
+                        <td>{{ $profile->phone }} </td>
+                        <td>{{ $profile->city }} </td>
+                        <td>{{ $profile->country }} </td>
+                        <td><a href="" class="btn btn-sm btn-info">Edit</a> <a class="btn btn-warning btn-sm" href="">View</a></td>
                     </tr>
+                    @endforeach
 
                 </tbody>
             </table>

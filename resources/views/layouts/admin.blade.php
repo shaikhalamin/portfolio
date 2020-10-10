@@ -23,7 +23,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-dark shadow-sm fixed-top">
             <div class="container">
                 <a class="navbar-brand" href="{{ route('admin.index') }}">
-                    <h2 class="text-info">Shaikh Dev</h2>
+                    <h2 class="text-info" style="color: #17A2C2!important;"><b>Shaikh Dev</b></h2>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -69,20 +69,14 @@
                 </div>
             </div>
         </nav>
-
-
-        <div class="container">
-            <div class="row mt-3">
-                <div class="col-md-2">
-                    @include('partials.admin.leftsidebar')
-                </div>
-                <div class="col-md-10">
-                    @yield('content')
-                </div>
+        <div class="row">
+            <div class="col-md-2">
+                @include('partials.admin.leftsidebar')
+            </div>
+            <div class="col-md-10">
+                @yield('content')
             </div>
         </div>
-
-
     </div>
     <script src="{{ asset('js/app.js') }}" defer></script>
 </body>
