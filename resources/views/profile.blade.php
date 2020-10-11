@@ -1,26 +1,26 @@
 @extends('layouts.portfolio')
 
 @section('content')
-<header>
-    <div class="jumbotron" id="particles-js" style="border-radius: 0px;background:#000;">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <h1 class="text-white"><b><span class="i-am">I'm</span> Shaikh Al Amin</b></h1>
-                    <h2 class="text-white"><b>Senior Software Engineer | Frontend Specialist</b></h2>
-                    <div class="row">
-                        <div class="col-md-6 offset-md-3 mb-3 mt-2"><a href="{{ asset('assets/docs/SHAIKH_AL_AMIN.pdf') }}" class="btn btn-sm btn-outline-info text-white" target="_blank" rel="noopener noreferrer" download style="border-color: #17a2b8;">Download CV</a><button type="button" class="btn btn-sm btn-outline-danger text-white ml-2">Hire Me</button></div>
-                    </div>
-                    <ul class="nav justify-content-center">
-                        <li class="nav-item"><a class="btn btn-sm" href="https://www.linkedin.com/in/shaikh-al-amin/"><i class="fa fa-linkedin-square" aria-hidden="true" style="font-size: 25px; color: rgb(255, 255, 255);"></i></a></li>
-                        <li class="nav-item"><a class="btn btn-sm" href="https://github.com/shaikhalamin"><i class="fa fa-github-square" aria-hidden="true" style="font-size: 25px; color: rgb(255, 255, 255);"></i></a></li>
-                        <li class="nav-item"><a class="btn btn-sm" href="https://twitter.com/shaikhalamin015"><i class="fa fa-twitter-square" aria-hidden="true" style="font-size: 25px; color: rgb(255, 255, 255);"></i></a></li>
-                    </ul>
+
+<div class="jumbotron" id="particles-js" style="border-radius: 0px; background-image:url('/assets/img/bgParticle.gif')">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h1 class="text-white"><b><span class="i-am">I'm</span> {{ $profile ? $profile->full_name : '' }}</b></h1>
+                <h5 class="text-white">{{ $profile ? $profile->specialized_at : '' }}</h5>
+                <div class="row">
+                    <div class="col-md-6 offset-md-3 mb-3 mt-2"><a href="{{ route('profiles.download_cv',['profile_id'=> $profile ? $profile->id : 0]) }}" class="btn btn-sm btn-outline-info text-white" target="_blank" rel="noopener noreferrer">Download CV</a><button type="button" class="btn btn-sm btn-outline-danger text-white ml-2 custom-btn-warning">Hire Me</button></div>
                 </div>
+                <ul class="nav justify-content-center">
+
+                    <li class="nav-item"><a class="btn btn-sm" href="https://www.linkedin.com/in/shaikh-al-amin/"><i class="fa fa-linkedin-square text-white" aria-hidden="false" style="font-size: 25px;"></i></a></li>
+                    <li class="nav-item"><a class="btn btn-sm" href="https://github.com/shaikhalamin"><i class="fa fa-github-square text-white" aria-hidden="true" style="font-size: 25px; "></i></a></li>
+                    <li class="nav-item"><a class="btn btn-sm" href="https://twitter.com/shaikhalamin015"><i class="fa fa-twitter-square text-white" aria-hidden="true" style="font-size: 25px;"></i></a></li>
+                </ul>
             </div>
         </div>
     </div>
-</header>
+</div>
 
 <section class="">
     <div class="container mt-5 mb-3">

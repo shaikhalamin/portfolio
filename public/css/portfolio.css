@@ -1,0 +1,36 @@
+html,body {
+    font-family: "Poppins", "Arial", "Helvetica", sans-serif;
+    height: 100%;
+    min-height: 100%;
+    /* padding-top: 2.3rem; */
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.i-am {
+    border-top: 3px solid #17a2b8;
+}
+
+.navbar-menu:hover {
+    border-bottom: 1px solid #17a2b8;
+}
+
+.custom-btn-warning{
+    background-color:transparent;
+    color: white;
+    border-color: #ffc107 !important;
+}
+.custom-btn-warning:hover{
+    background-color:#ffc107 !important;
+    color: white;
+    border-color: #ffc107 !important;
+}
+
+.custom-btn-info{
+    background-color: #17A2C2 !important;
+}
+
+.custom-text-info{
+    color: #17A2C2!important;
+}
+  

@@ -15,6 +15,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/portfolio.css') }}" rel="stylesheet">
+    @yield('css')
 </head>
 
 <body>
@@ -22,7 +24,7 @@
         <nav class="navbar navbar-expand-sm navbar-white mb-0" style="background-color: #000;">
             <div class="container">
                 <a href="/" class="text-white navbar-brand">
-                    <h2 class="navbar-brand text-white mt-1" href="#" style="font-size: 34px;font-weight:bold">
+                    <h2 class="navbar-brand text-white mt-1" style="font-size: 34px;">
                         <span class="" style="color: #17A2C2!important;">Shaikh</span> Dev
                     </h2>
                 </a>
@@ -31,27 +33,27 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ml-auto font-weight-bold">
-                        <li class="nav-item active">
-                            <a class="nav-link text-white" href="#">HOME</a>
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active navbar-menu">
+                            <a class="nav-link text-white " href="#">HOME</a>
                         </li>
-                        <li class="nav-item active">
+                        <li class="nav-item active navbar-menu">
                             <a class="nav-link text-white" href="#">ABOUT</a>
                         </li>
-                        <li class="nav-item active">
+                        <li class="nav-item active navbar-menu">
                             <a class="nav-link text-white" href="#">EXPERICENCE</a>
                         </li>
-                        <li class="nav-item active">
+                        <li class="nav-item active navbar-menu">
                             <a class="nav-link text-white" href="#">SKILLS</a>
                         </li>
-                        <li class="nav-item active">
+                        <li class="nav-item active navbar-menu">
                             <a class="nav-link text-white" href="#">PORTFOLIO</a>
                         </li>
-                        <li class="nav-item active">
+                        <li class="nav-item active navbar-menu">
                             <a class="nav-link text-white" href="#">BLOG</a>
                         </li>
                         <li class="nav-item active">
-                            <a class="btn btn-sm btn-info btn-block text-white mt-1 ml-1" style="background-color:#17A2C2!important;font-weight:bold" href="#">CONTACT INFO</a>
+                            <a class="btn btn-sm btn-info btn-block text-white mt-1 ml-1" style="background-color:#17A2C2!important;" href="#">CONTACT INFO</a>
                         </li>
                     </ul>
                 </div>
@@ -63,6 +65,7 @@
         </main>
     </div>
     <script src="{{ asset('js/app.js') }}" defer></script>
+    @yield('javascript')
 </body>
 
 </html>

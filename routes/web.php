@@ -22,19 +22,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/admin', 'AdminController@index')->name('admin.index');
 
-Route::get('/admin/profile', 'ProfileController@indexAdmin')->name('admin.profile.index');
-Route::get('/admin/profile/create', 'ProfileController@create')->name('admin.profile.create');
-Route::post('/admin/profile/save', 'ProfileController@store')->name('admin.profile.save');
+Route::get('profiles', 'ProfileController@indexAdmin')->name('profiles.index');
+Route::get('profiles/cv-download/{profile_id}', 'ProfileController@downloadCv')->name('profiles.download_cv');
 
-Route::group(['name' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth'], function () {
-
-    // URL: /admin/users
-    // Route name: admin.users
-    /* Route::get('users', function () {
-        return 'Admin: user list';
-    })->name('users'); */
-
-    //Route::get('', 'AdminController@index')->name('index');
-
-
-});
+Route::resource('profiles', 'ProfileController')->except(['index']);

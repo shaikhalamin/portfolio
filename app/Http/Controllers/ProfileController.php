@@ -6,14 +6,14 @@ use App\Http\Requests\ProfileRequest;
 use App\Profile;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Str;
 
 class ProfileController extends Controller
 {
 
     public function __construct()
     {
-        // $this->middleware('auth');
-        $this->middleware('auth', ['except' => ['index']]);
+        $this->middleware('auth', ['except' => ['index', 'downloadCv']]);
     }
 
 
@@ -24,7 +24,10 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return view('profile');
+        $profile =  Profile::find(1);
+
+        //dd($profile);
+        return view('profile', compact('profile'));
     }
 
     public function indexAdmin()
@@ -67,6 +70,19 @@ class ProfileController extends Controller
         $profile->designation   = $request->designation;
         $profile->specialized_at    = $request->specialized_at;
 
+        //cv upload
+        $cvFile = $request->file('cv_file');
+        $cvFileName = md5($request->phone . $request->email) . '.' . $cvFile->getClientOriginalExtension();
+        $request->cv_file->move(public_path('/assets/docs/'), $cvFileName);
+        $profile->cv_file = $cvFileName;
+
+
+        //we can also upload file using the following way
+        //$request->logo->storeAs('docs', $cvFileName); //  it will move the file to   /storage/app/docs folder
+        //better explanation is given below
+        //#https://quickadminpanel.com/blog/file-upload-in-laravel-the-ultimate-guide/ 
+
+
         //cover picture upload using intervention image
         $coverImageFile = $request->file('picture_cover');
         $coverFileName = md5($request->phone) . '.' . $coverImageFile->getClientOriginalExtension();
@@ -81,13 +97,13 @@ class ProfileController extends Controller
         $aboutPictureName = md5($request->email) . '.' . $aboutPictureFile->getClientOriginalExtension();
         Image::make($aboutPictureFile)->save(public_path('/assets/images/') . $aboutPictureName);
 
-        $profile->picture_about = $aboutPictureName;
-        $profile->linkedin_profile_path = $request->linkedin_profile_path;
-        $profile->github_profile_path   = $request->github_profile_path;
-        $profile->twitter_profile_path  = $request->twitter_profile_path;
-        $profile->about_info    = $request->about_info;
-        $profile->profile_title = $request->profile_title;
-        $profile->profile_meta  = $request->profile_meta;
+        $profile->picture_about             = $aboutPictureName;
+        $profile->linkedin_profile_path     = $request->linkedin_profile_path;
+        $profile->github_profile_path       = $request->github_profile_path;
+        $profile->twitter_profile_path      = $request->twitter_profile_path;
+        $profile->about_info                = trim($request->about_info);
+        $profile->profile_title             = $request->profile_title;
+        $profile->profile_meta              = $request->profile_meta;
         $profile->profile_meta_descriptions = $request->profile_meta_descriptions;
 
         //search engine optimization internal meta image upload using intervention image
@@ -101,7 +117,7 @@ class ProfileController extends Controller
 
         $profile->save();
 
-        return redirect(route('admin.profile.index'))->with('profile_created', 'User profile created successfully');
+        return redirect(route('profile.index'))->with('profile_created', 'User profile created successfully');
     }
 
     /**
@@ -112,7 +128,7 @@ class ProfileController extends Controller
      */
     public function show(Profile $profile)
     {
-        //
+        return view('admin.profile.show', compact('profile'));
     }
 
     /**
@@ -123,7 +139,8 @@ class ProfileController extends Controller
      */
     public function edit(Profile $profile)
     {
-        //
+
+        return view('admin.profile.edit', compact('profile'));
     }
 
     /**
@@ -133,9 +150,9 @@ class ProfileController extends Controller
      * @param  \App\Profile  $profile
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Profile $profile)
+    public function update(ProfileRequest $request, Profile $profile)
     {
-        //
+        dd($request->all());
     }
 
     /**
@@ -147,5 +164,28 @@ class ProfileController extends Controller
     public function destroy(Profile $profile)
     {
         //
+    }
+
+    public function downloadCv($profile_id = null)
+    {
+        $profile =  Profile::find($profile_id);
+
+        if (!is_null($profile)) {
+
+            $pathToFile =  public_path('/assets/docs/') . $profile->cv_file;
+
+            if (file_exists($pathToFile)) {
+
+                // $headers = ['Content-Type: application/pdf'];
+
+                $CV_NAME = Str::slug($profile->cv_name . '_cv', '_');
+
+                return response()->download($pathToFile, $CV_NAME);
+            }
+
+            return null;
+        }
+
+        return null;
     }
 }

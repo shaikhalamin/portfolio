@@ -29,6 +29,7 @@ class CreateProfilesTable extends Migration
             $table->string('specialized_at');
             $table->string('picture_cover');
             $table->string('picture_about');
+            $table->string('cv_file');
             $table->string('linkedin_profile_path');
             $table->string('github_profile_path');
             $table->string('twitter_profile_path');

@@ -11,7 +11,9 @@
             @endif
 
             <h4 class="mt-2 mb-2">Profiles</h4>
-            <a href="{{ route('admin.profile.create') }}" class="btn btn-sm btn-primary text-white">Create profile</a>
+            <a href="{{ route('profiles.create') }}" class="btn btn-sm btn-primary text-white">
+                <i class="fa fa-plus" aria-hidden="true"></i> Create Profile</a>
+            <hr>
         </div>
     </div>
     <div class="row">
@@ -37,7 +39,16 @@
                         <td>{{ $profile->phone }} </td>
                         <td>{{ $profile->city }} </td>
                         <td>{{ $profile->country }} </td>
-                        <td><a href="" class="btn btn-sm btn-info">Edit</a> <a class="btn btn-warning btn-sm" href="">View</a></td>
+                        <td>
+
+                            <a class="btn btn-info btn-sm text-white" href="{{ route('profiles.edit',['profile'=>$profile->id]) }}">
+                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                            </a>
+                            <a href="{{ route('profiles.show',['profile'=>$profile->id]) }}" class="btn btn-sm btn-info text-white">
+                                <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+
+                            </a>
+                        </td>
                     </tr>
                     @endforeach
 
