@@ -13,9 +13,9 @@
                 </div>
                 <ul class="nav justify-content-center">
 
-                    <li class="nav-item"><a class="btn btn-sm" href="https://www.linkedin.com/in/shaikh-al-amin/"><i class="fa fa-linkedin-square text-white" aria-hidden="false" style="font-size: 25px;"></i></a></li>
-                    <li class="nav-item"><a class="btn btn-sm" href="https://github.com/shaikhalamin"><i class="fa fa-github-square text-white" aria-hidden="true" style="font-size: 25px; "></i></a></li>
-                    <li class="nav-item"><a class="btn btn-sm" href="https://twitter.com/shaikhalamin015"><i class="fa fa-twitter-square text-white" aria-hidden="true" style="font-size: 25px;"></i></a></li>
+                    <li class="nav-item"><a class="btn btn-sm" href="https://www.linkedin.com/in/shaikh-al-amin/"><i class="fa fa-linkedin-square" aria-hidden="false" style="font-size: 25px; color:rgb(255, 255, 255)"></i></a></li>
+                    <li class="nav-item"><a class="btn btn-sm" href="https://github.com/shaikhalamin"><i class="fa fa-github-square " aria-hidden="true" style="font-size: 25px;color:rgb(255, 255, 255) "></i></a></li>
+                    <li class="nav-item"><a class="btn btn-sm" href="https://twitter.com/shaikhalamin015"><i class="fa fa-twitter-square" aria-hidden="true" style="font-size: 25px; color:rgb(255, 255, 255)"></i></a></li>
                 </ul>
             </div>
         </div>
