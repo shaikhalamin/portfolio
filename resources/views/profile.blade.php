@@ -18,9 +18,9 @@
 @endsection
 
 @section('facebook_meta')
-<meta property="og:title" content="Web and Mobile App Developer in Bangladesh - Sohel Rana" />
-<meta property="og:description" content="Full stack freelance front-end back-end php best web software UI UX graphic flutter mobile apps android and iOS development from Dhaka Bangladesh." />
-<meta property="og:image" content="https://sohelrana.net/assets/img/banner.jpg" />
+<meta property="og:title" content="{{ $profile ? $profile->profile_title : 'Shaikh Al Amin | Senior Software Engineer ' }}" />
+<meta property="og:description" content="{{ $profile ? $profile->profile_meta_descriptions : 'Shaikh Al Amin | Senior Software Engineer | Fullstack Developer' }}" />
+<meta property="og:image" content="{{ $profile ? asset('assets/images/').'/'.$profile->picture_about : asset('assets/images/shaikh_alamin.jpg') }}" />
 <meta property="og:url" content="{{ url('/') }}" />
 @endsection
 
