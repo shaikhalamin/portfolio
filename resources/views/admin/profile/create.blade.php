@@ -11,7 +11,7 @@
                         @csrf
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="full_name" class="font-weight-bold">Full Name</label>
+                                <label for="full_name" class="">Full Name</label>
                                 <input type="text" name="full_name" value="{{ old('full_name') }}" class="form-control @error('full_name') is-invalid @enderror " id="full_name">
                                 @error('full_name')
                                 <div class="invalid-feedback">{{ $message }}</div>
@@ -19,7 +19,7 @@
 
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="cv_name" class="font-weight-bold">CV Name</label>
+                                <label for="cv_name" class="">CV Name</label>
                                 <input type="text" name="cv_name" value="{{ old('cv_name') }}" class="form-control @error('cv_name') is-invalid @enderror " id="cv_name">
                                 @error('cv_name')
                                 <div class="invalid-feedback">{{ $message }}</div>
@@ -28,14 +28,14 @@
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="email" class="font-weight-bold">Email</label>
+                                <label for="email" class="">Email</label>
                                 <input type="email" name="email" value="{{ old('email') }}" class="form-control @error('email') is-invalid @enderror " id="email">
                                 @error('email')
                                 <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="phone" class="font-weight-bold">Phone</label>
+                                <label for="phone" class="">Phone</label>
                                 <input type="text" name="phone" value="{{ old('phone') }}" class="form-control @error('phone') is-invalid @enderror " id="phone">
                                 @error('phone')
                                 <div class="invalid-feedback">{{ $message }}</div>
@@ -45,7 +45,7 @@
 
                         <div class="form-row">
                             <div class="form-group col-md-4">
-                                <label for="city" class="font-weight-bold">City</label>
+                                <label for="city" class="">City</label>
                                 <input type="text" name="city" value="{{ old('city') }}" class="form-control @error('city') is-invalid @enderror " id="city">
                                 @error('city')
                                 <div class="invalid-feedback">{{ $message }}</div>
@@ -213,7 +213,13 @@
             </div>
         </div>
     </div>
-
-
 </section>
+@endsection
+
+@section('javascript')
+<script src="https://cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace('about_info');
+</script>
+
 @endsection

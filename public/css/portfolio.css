@@ -11,13 +11,17 @@ html,body {
     border-top: 3px solid #17a2b8;
 }
 
+.border-bottom-3 {
+    border-bottom: 3px solid #17a2b8;
+  }
+
 .navbar-menu:hover {
     border-bottom: 1px solid #17a2b8;
 }
 
 .custom-btn-warning{
     background-color:transparent;
-    color: white;
+    color: #000;
     border-color: #ffc107 !important;
 }
 .custom-btn-warning:hover{

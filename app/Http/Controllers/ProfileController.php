@@ -117,7 +117,7 @@ class ProfileController extends Controller
 
         $profile->save();
 
-        return redirect(route('profile.index'))->with('profile_created', 'User profile created successfully');
+        return redirect(route('profiles.index'))->with('profile_created', 'User profile created successfully');
     }
 
     /**
@@ -152,7 +152,76 @@ class ProfileController extends Controller
      */
     public function update(ProfileRequest $request, Profile $profile)
     {
-        dd($request->all());
+        //dd($request->all());
+
+        $profile->full_name = $request->full_name;
+        $profile->cv_name   = $request->cv_name;
+        $profile->email = $request->email;
+        $profile->phone = $request->phone;
+        $profile->city  = $request->city;
+        $profile->country   = $request->country;
+        $profile->postal_code   = $request->postal_code;
+        $profile->date_of_birth = date('Y-m-d', strtotime($request->date_of_birth));
+        $profile->cityzenship   = $request->cityzenship;
+        $profile->maritial_status   = $request->maritial_status;
+        $profile->designation   = $request->designation;
+        $profile->specialized_at    = $request->specialized_at;
+
+        //cv upload
+        if ($request->hasFile('cv_file')) {
+            $cvFile = $request->file('cv_file');
+            $cvFileName = md5($request->phone . $request->email) . '.' . $cvFile->getClientOriginalExtension();
+            $request->cv_file->move(public_path('/assets/docs/'), $cvFileName);
+            $profile->cv_file = $cvFileName;
+        }
+
+        //we can also upload file using the following way
+        //$request->logo->storeAs('docs', $cvFileName); //  it will move the file to   /storage/app/docs folder
+        //better explanation is given below
+        //#https://quickadminpanel.com/blog/file-upload-in-laravel-the-ultimate-guide/ 
+
+
+        //cover picture upload using intervention image
+        if ($request->hasFile('picture_cover')) {
+            $coverImageFile = $request->file('picture_cover');
+            $coverFileName = md5($request->phone) . '.' . $coverImageFile->getClientOriginalExtension();
+            Image::make($coverImageFile)->save(public_path('/assets/images/') . $coverFileName);
+            $profile->picture_cover =  $coverFileName;
+        }
+
+
+        //about section image upload using intervention image
+        if ($request->hasFile('picture_about')) {
+            $aboutPictureFile = $request->file('picture_about');
+            $aboutPictureName = md5($request->email) . '.' . $aboutPictureFile->getClientOriginalExtension();
+            Image::make($aboutPictureFile)->save(public_path('/assets/images/') . $aboutPictureName);
+            $profile->picture_about             = $aboutPictureName;
+        }
+
+        $profile->linkedin_profile_path     = $request->linkedin_profile_path;
+        $profile->github_profile_path       = $request->github_profile_path;
+        $profile->twitter_profile_path      = $request->twitter_profile_path;
+        $profile->about_info                = trim($request->about_info);
+        $profile->profile_title             = $request->profile_title;
+        $profile->profile_meta              = $request->profile_meta;
+        $profile->profile_meta_descriptions = $request->profile_meta_descriptions;
+
+        //search engine optimization internal meta image upload using intervention image
+        if ($request->hasFile('smo_image')) {
+            $smoImageFile = $request->file('smo_image');
+            $smoImageName = md5($request->cv_name) . '.' . $smoImageFile->getClientOriginalExtension();
+            Image::make($smoImageFile)->save(public_path('/assets/images/') . $smoImageName);
+            $profile->smo_image = $smoImageName;
+        }
+
+
+        $profile->user_id = auth()->user()->id;
+
+        //dd($profile);
+
+        $profile->save();
+
+        return redirect(route('profiles.index'))->with('profile_created', 'User profile updated successfully');
     }
 
     /**

@@ -23,7 +23,7 @@ class ProfileRequest extends FormRequest
      */
     public function rules()
     {
-        return [
+        $rules =  [
             'full_name' => 'bail|required',
             'cv_name' => 'required',
             'email' => 'required',
@@ -36,9 +36,6 @@ class ProfileRequest extends FormRequest
             'maritial_status' => 'required',
             'designation' => 'required',
             'specialized_at' => 'required',
-            'picture_cover' => 'image|required|mimes:jpeg,png,jpg',
-            'picture_cover' => 'image|required|mimes:jpeg,png,jpg',
-            'cv_file' => 'file|required|mimes:pdf|max:1024',
             'linkedin_profile_path' => 'nullable|url',
             'github_profile_path' => 'nullable|url',
             'twitter_profile_path' => 'nullable|url',
@@ -46,7 +43,25 @@ class ProfileRequest extends FormRequest
             'profile_title' => 'required|max:255',
             'profile_meta' => 'required|max:255',
             'profile_meta_descriptions' => 'required|max:255',
-            'smo_image' => 'nullable|image|mimes:jpeg,png,jpg',
+
         ];
+
+        if ($this->request->has('cv_file') && $this->request->cv_file && !is_null($this->request->cv_file)) {
+            $rules['cv_file'] = 'file|required|mimes:pdf|max:1024';
+        }
+
+        if ($this->request->has('smo_image') && $this->request->smo_image && !is_null($this->request->smo_image)) {
+            $rules['smo_image'] = 'nullable|image|mimes:jpeg,png,jpg';
+        }
+
+        if ($this->request->has('picture_cover') && $this->request->picture_cover && !is_null($this->request->picture_cover)) {
+            $rules['picture_cover'] = 'image|required|mimes:jpeg,png,jpg';
+        }
+
+        if ($this->request->has('picture_about') && $this->request->picture_about && !is_null($this->request->picture_about)) {
+            $rules['picture_about'] = 'image|required|mimes:jpeg,png,jpg';
+        }
+
+        return $rules;
     }
 }
