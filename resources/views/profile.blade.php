@@ -20,7 +20,7 @@
 @section('facebook_meta')
 <meta property="og:title" content="{{ $profile ? $profile->profile_title : 'Shaikh Al Amin | Senior Software Engineer ' }}" />
 <meta property="og:description" content="{{ $profile ? $profile->profile_meta_descriptions : 'Shaikh Al Amin | Senior Software Engineer | Fullstack Developer' }}" />
-<meta property="og:image" content="{{ $profile ? asset('assets/images/').'/'.$profile->picture_about : asset('assets/images/shaikh_alamin.jpg') }}" />
+<meta property="og:image" content="{{ $profile ? asset('assets/images/').'/'.$profile->smo_image : asset('assets/images/shaikh_alamin.jpg') }}" />
 <meta property="og:url" content="{{ url('/') }}" />
 @endsection
 

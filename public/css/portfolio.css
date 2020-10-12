@@ -11,6 +11,15 @@ html,body {
     border-top: 3px solid #17a2b8;
 }
 
+.font-15 {
+    font-size: 16px;
+  }
+  
+  .font-14 {
+    font-size: 16px;
+  }
+  
+
 .border-bottom-3 {
     border-bottom: 3px solid #17a2b8;
   }
