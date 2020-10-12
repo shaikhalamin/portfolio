@@ -10,6 +10,12 @@
             </div>
             @endif
 
+            @if (session('profile_error'))
+            <div class="alert alert-danger">
+                {{ session('profile_error') }}
+            </div>
+            @endif
+
             <h4 class="mt-2 mb-2">Profiles</h4>
             <a href="{{ route('profiles.create') }}" class="btn btn-sm btn-primary text-white">
                 <i class="fa fa-plus" aria-hidden="true"></i> Create Profile</a>

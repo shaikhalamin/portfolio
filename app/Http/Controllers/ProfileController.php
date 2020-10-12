@@ -169,10 +169,27 @@ class ProfileController extends Controller
 
         //cv upload
         if ($request->hasFile('cv_file')) {
-            $cvFile = $request->file('cv_file');
-            $cvFileName = md5($request->phone . $request->email) . '.' . $cvFile->getClientOriginalExtension();
-            $request->cv_file->move(public_path('/assets/docs/'), $cvFileName);
-            $profile->cv_file = $cvFileName;
+            //delete previous file 
+            $pathToCvFile =  public_path('/assets/docs/') . $profile->cv_file;
+
+            if (file_exists($pathToCvFile)) {
+                $deleteCvFile = unlink($pathToCvFile);
+
+                if ($deleteCvFile) {
+                    $cvFile = $request->file('cv_file');
+                    $cvFileName = md5($request->phone . $request->email) . '.' . $cvFile->getClientOriginalExtension();
+                    $request->cv_file->move(public_path('/assets/docs/'), $cvFileName);
+                    $profile->cv_file = $cvFileName;
+                } else {
+                    return redirect(route('profiles.index'))->with('profile_error', 'User CV couldnot delete');
+                }
+            } else {
+
+                $cvFile = $request->file('cv_file');
+                $cvFileName = md5($request->phone . $request->email) . '.' . $cvFile->getClientOriginalExtension();
+                $request->cv_file->move(public_path('/assets/docs/'), $cvFileName);
+                $profile->cv_file = $cvFileName;
+            }
         }
 
         //we can also upload file using the following way
@@ -183,19 +200,49 @@ class ProfileController extends Controller
 
         //cover picture upload using intervention image
         if ($request->hasFile('picture_cover')) {
-            $coverImageFile = $request->file('picture_cover');
-            $coverFileName = md5($request->phone) . '.' . $coverImageFile->getClientOriginalExtension();
-            Image::make($coverImageFile)->save(public_path('/assets/images/') . $coverFileName);
-            $profile->picture_cover =  $coverFileName;
+            $pathToPictureCoverFile =  public_path('/assets/images/') . $profile->picture_cover;
+
+            if (file_exists($pathToPictureCoverFile)) {
+                $deletePictureCoverFile = unlink($pathToPictureCoverFile);
+                if ($deletePictureCoverFile) {
+                    $coverImageFile = $request->file('picture_cover');
+                    $coverFileName = md5($request->phone) . '.' . $coverImageFile->getClientOriginalExtension();
+                    Image::make($coverImageFile)->save(public_path('/assets/images/') . $coverFileName);
+                    $profile->picture_cover =  $coverFileName;
+                } else {
+                    return redirect(route('profiles.index'))->with('profile_error', 'User cover picture couldnot delete');
+                }
+            } else {
+                $coverImageFile = $request->file('picture_cover');
+                $coverFileName = md5($request->phone) . '.' . $coverImageFile->getClientOriginalExtension();
+                Image::make($coverImageFile)->save(public_path('/assets/images/') . $coverFileName);
+                $profile->picture_cover =  $coverFileName;
+            }
         }
 
 
         //about section image upload using intervention image
         if ($request->hasFile('picture_about')) {
-            $aboutPictureFile = $request->file('picture_about');
-            $aboutPictureName = md5($request->email) . '.' . $aboutPictureFile->getClientOriginalExtension();
-            Image::make($aboutPictureFile)->save(public_path('/assets/images/') . $aboutPictureName);
-            $profile->picture_about             = $aboutPictureName;
+
+            $pathToPictureAboutFile =  public_path('/assets/images/') . $profile->picture_about;
+
+            if (file_exists($pathToPictureAboutFile)) {
+                $deletePictureAboutFile = unlink($pathToPictureAboutFile);
+
+                if ($deletePictureAboutFile) {
+                    $aboutPictureFile = $request->file('picture_about');
+                    $aboutPictureName = md5($request->email) . '.' . $aboutPictureFile->getClientOriginalExtension();
+                    Image::make($aboutPictureFile)->save(public_path('/assets/images/') . $aboutPictureName);
+                    $profile->picture_about             = $aboutPictureName;
+                } else {
+                    return redirect(route('profiles.index'))->with('profile_error', 'User about picture couldnot delete');
+                }
+            } else {
+                $aboutPictureFile = $request->file('picture_about');
+                $aboutPictureName = md5($request->email) . '.' . $aboutPictureFile->getClientOriginalExtension();
+                Image::make($aboutPictureFile)->save(public_path('/assets/images/') . $aboutPictureName);
+                $profile->picture_about             = $aboutPictureName;
+            }
         }
 
         $profile->linkedin_profile_path     = $request->linkedin_profile_path;
@@ -208,10 +255,26 @@ class ProfileController extends Controller
 
         //search engine optimization internal meta image upload using intervention image
         if ($request->hasFile('smo_image')) {
-            $smoImageFile = $request->file('smo_image');
-            $smoImageName = md5($request->cv_name) . '.' . $smoImageFile->getClientOriginalExtension();
-            Image::make($smoImageFile)->save(public_path('/assets/images/') . $smoImageName);
-            $profile->smo_image = $smoImageName;
+
+            $pathToSmoImageFile =  public_path('/assets/images/') . $profile->smo_image;
+
+            if (file_exists($pathToSmoImageFile)) {
+                $deleteSmoImageFile = unlink($pathToSmoImageFile);
+                if ($deleteSmoImageFile) {
+                    $smoImageFile = $request->file('smo_image');
+                    $smoImageName = md5($request->cv_name) . '.' . $smoImageFile->getClientOriginalExtension();
+                    Image::make($smoImageFile)->save(public_path('/assets/images/') . $smoImageName);
+                    $profile->smo_image = $smoImageName;
+                } else {
+                    return redirect(route('profiles.index'))->with('profile_error', 'User smo picture couldnot delete');
+                }
+            } else {
+
+                $smoImageFile = $request->file('smo_image');
+                $smoImageName = md5($request->cv_name) . '.' . $smoImageFile->getClientOriginalExtension();
+                Image::make($smoImageFile)->save(public_path('/assets/images/') . $smoImageName);
+                $profile->smo_image = $smoImageName;
+            }
         }
 
 

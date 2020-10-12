@@ -3,12 +3,24 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
 
-    <title>@yield('title') - {{ config('app.name', 'Shaikh Al Amin') }}</title>
+    <title>@yield('title')</title>
+    <meta name="description" content="@yield('meta_description')" />
+    <meta name="keywords" content="@yield('meta_keyword')" />
+    <meta name="author" content="@yield('author')" />
+
+    <link href="{{ asset('/assets/img/favicon.ico') }}" rel="shortcut icon">
+
+
+    @yield('facebook_meta')
+
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900%7cTeko:300,400,500,600,700&display=swap" rel="stylesheet" />

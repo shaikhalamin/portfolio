@@ -1,5 +1,31 @@
 @extends('layouts.portfolio')
 
+
+@section('title')
+{{ $profile ? $profile->profile_title : 'Shaikh Al Amin | Senior Software Engineer ' }}
+@endsection
+
+@section('meta_description')
+{{ $profile ? $profile->profile_meta_descriptions : 'Shaikh Al Amin | Senior Software Engineer | Fullstack Developer' }}
+@endsection
+
+@section('meta_keyword')
+{{ $profile ? $profile->profile_meta : 'Shaikh Al Amin,Senior Software Engineer,Fullstack Developer' }}
+@endsection
+
+@section('author')
+{{ $profile ? $profile->full_name : 'Shaikh Al Amin' }}
+@endsection
+
+@section('facebook_meta')
+<meta property="og:title" content="Web and Mobile App Developer in Bangladesh - Sohel Rana" />
+<meta property="og:description" content="Full stack freelance front-end back-end php best web software UI UX graphic flutter mobile apps android and iOS development from Dhaka Bangladesh." />
+<meta property="og:image" content="https://sohelrana.net/assets/img/banner.jpg" />
+<meta property="og:url" content="{{ url('/') }}" />
+@endsection
+
+
+
 @section('content')
 
 <div class="jumbotron" id="particles-js" style="border-radius: 0px; background-image:url('/assets/img/bgParticle.gif')">
@@ -24,7 +50,7 @@
 <section class="">
     <div class="container mt-5 mb-3">
         <div class="row">
-            <div class="col-md-6"><img src="{{ asset('assets/images/shaikh_alamin.jpg') }}" class="img-fluid" alt="shaikh_image"></div>
+            <div class="col-md-6"><img src="{{ $profile ? asset('assets/images/').'/'.$profile->picture_about : asset('assets/images/shaikh_alamin.jpg')  }}" class="img-fluid" alt="shaikh_image"></div>
             <div class="col-md-6 border-left about-info">
                 <h4 class="text-justify ml-3 mb-3 text-dark"><span class="border-bottom-3">About</span> Me</h4>
                 <div class="text-justify ml-3 font-15">{!! $profile ? $profile->about_info : '' !!}</div>
