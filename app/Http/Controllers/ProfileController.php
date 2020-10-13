@@ -117,7 +117,7 @@ class ProfileController extends Controller
 
         $profile->save();
 
-        return redirect(route('profiles.index'))->with('profile_created', 'User profile created successfully');
+        return redirect(route('profiles.index'))->with('created', 'User profile created successfully');
     }
 
     /**
@@ -181,7 +181,7 @@ class ProfileController extends Controller
                     $request->cv_file->move(public_path('/assets/docs/'), $cvFileName);
                     $profile->cv_file = $cvFileName;
                 } else {
-                    return redirect(route('profiles.index'))->with('profile_error', 'User CV couldnot delete');
+                    return redirect(route('profiles.index'))->with('error', 'User CV couldnot delete');
                 }
             } else {
 
@@ -210,7 +210,7 @@ class ProfileController extends Controller
                     Image::make($coverImageFile)->save(public_path('/assets/images/') . $coverFileName);
                     $profile->picture_cover =  $coverFileName;
                 } else {
-                    return redirect(route('profiles.index'))->with('profile_error', 'User cover picture couldnot delete');
+                    return redirect(route('profiles.index'))->with('error', 'User cover picture couldnot delete');
                 }
             } else {
                 $coverImageFile = $request->file('picture_cover');
@@ -235,7 +235,7 @@ class ProfileController extends Controller
                     Image::make($aboutPictureFile)->save(public_path('/assets/images/') . $aboutPictureName);
                     $profile->picture_about             = $aboutPictureName;
                 } else {
-                    return redirect(route('profiles.index'))->with('profile_error', 'User about picture couldnot delete');
+                    return redirect(route('profiles.index'))->with('error', 'User about picture couldnot delete');
                 }
             } else {
                 $aboutPictureFile = $request->file('picture_about');
@@ -266,7 +266,7 @@ class ProfileController extends Controller
                     Image::make($smoImageFile)->save(public_path('/assets/images/') . $smoImageName);
                     $profile->smo_image = $smoImageName;
                 } else {
-                    return redirect(route('profiles.index'))->with('profile_error', 'User smo picture couldnot delete');
+                    return redirect(route('profiles.index'))->with('error', 'User smo picture couldnot delete');
                 }
             } else {
 
@@ -284,7 +284,7 @@ class ProfileController extends Controller
 
         $profile->save();
 
-        return redirect(route('profiles.index'))->with('profile_created', 'User profile updated successfully');
+        return redirect(route('profiles.index'))->with('created', 'User profile updated successfully');
     }
 
     /**

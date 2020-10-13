@@ -26,3 +26,5 @@ Route::get('profiles', 'ProfileController@indexAdmin')->name('profiles.index');
 Route::get('profiles/cv-download/{profile_id}', 'ProfileController@downloadCv')->name('profiles.download_cv');
 
 Route::resource('profiles', 'ProfileController')->except(['index']);
+
+Route::resource('experiences', 'ExperienceController');

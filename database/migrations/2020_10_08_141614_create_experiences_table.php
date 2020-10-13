@@ -21,7 +21,7 @@ class CreateExperiencesTable extends Migration
             $table->string('company_location');
             $table->string('company_city');
             $table->string('company_country');
-            $table->string('company_website');
+            $table->string('company_website')->nullable();
             $table->string('project_website')->nullable();
             $table->string('designation');
             $table->string('job_type')->comment('full time or part time');

@@ -4,18 +4,7 @@
 <section class="">
     <div class="row">
         <div class="col-md-12">
-            @if (session('profile_created'))
-            <div class="alert alert-success">
-                {{ session('profile_created') }}
-            </div>
-            @endif
-
-            @if (session('profile_error'))
-            <div class="alert alert-danger">
-                {{ session('profile_error') }}
-            </div>
-            @endif
-
+            @include('partials.admin.flash_message')
             <h4 class="mt-2 mb-2">Profiles</h4>
             <a href="{{ route('profiles.create') }}" class="btn btn-sm btn-primary text-white">
                 <i class="fa fa-plus" aria-hidden="true"></i> Create Profile</a>
@@ -24,42 +13,48 @@
     </div>
     <div class="row">
         <div class="col-md-12 mt-3">
-            <table class="table table-hover border">
-                <thead>
-                    <tr>
-                        <th scope="col">Full Name</th>
-                        <th scope="col">Designation</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Phone</th>
-                        <th scope="col">City</th>
-                        <th scope="col">Country</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($profiles as $key=>$profile)
-                    <tr>
-                        <td>{{ $profile->full_name }} </td>
-                        <td>{{ $profile->designation }} </td>
-                        <td>{{ $profile->email }} </td>
-                        <td>{{ $profile->phone }} </td>
-                        <td>{{ $profile->city }} </td>
-                        <td>{{ $profile->country }} </td>
-                        <td>
+            <div class="card">
+                <div class="card-body">
+                    <table class="table table-hover border font-16">
+                        <thead>
+                            <tr>
+                                <th scope="col">Full Name</th>
+                                <th scope="col">Designation</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Phone</th>
+                                <th scope="col">City</th>
+                                <th scope="col">Country</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($profiles as $key=>$profile)
+                            <tr>
+                                <td>{{ $profile->full_name }} </td>
+                                <td>{{ $profile->designation }} </td>
+                                <td>{{ $profile->email }} </td>
+                                <td>{{ $profile->phone }} </td>
+                                <td>{{ $profile->city }} </td>
+                                <td>{{ $profile->country }} </td>
+                                <td>
 
-                            <a class="btn btn-info btn-sm text-white" href="{{ route('profiles.edit',['profile'=>$profile->id]) }}">
-                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                            </a>
-                            <a href="{{ route('profiles.show',['profile'=>$profile->id]) }}" class="btn btn-sm btn-info text-white">
-                                <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                                    <a class="btn btn-info btn-sm text-white" href="{{ route('profiles.edit',['profile'=>$profile->id]) }}">
+                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                    </a>
+                                    <a href="{{ route('profiles.show',['profile'=>$profile->id]) }}" class="btn btn-sm btn-info text-white">
+                                        <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
 
-                            </a>
-                        </td>
-                    </tr>
-                    @endforeach
+                                    </a>
+                                </td>
+                            </tr>
+                            @endforeach
 
-                </tbody>
-            </table>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
         </div>
     </div>
 </section>
