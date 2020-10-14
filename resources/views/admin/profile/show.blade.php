@@ -12,7 +12,7 @@
                     <table class="table table-hover border">
                         <thead>
                         </thead>
-                        <tbody>
+                        <tbody class="font-16">
                             <tr>
                                 <th>Full Name</th>
                                 <td>{{ $profile->full_name }} </td>

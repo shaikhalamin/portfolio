@@ -46,20 +46,33 @@ class ProfileRequest extends FormRequest
 
         ];
 
-        if ($this->request->has('cv_file') && $this->request->cv_file && !is_null($this->request->cv_file)) {
-            $rules['cv_file'] = 'file|required|mimes:pdf|max:1024';
+        if ($this->method == "POST") {
+            $rules['cv_file'] =  'file|required|mimes:pdf|max:1024';
+            $rules['picture_cover'] =  'image|required|mimes:jpeg,png,jpg';
+            $rules['picture_about'] =  'image|required|mimes:jpeg,png,jpg';
+
+            if ($this->files->has('smo_image')) {
+                $rules['smo_image'] =  'image|required|mimes:jpeg,png,jpg';
+            }
         }
 
-        if ($this->request->has('smo_image') && $this->request->smo_image && !is_null($this->request->smo_image)) {
-            $rules['smo_image'] = 'nullable|image|mimes:jpeg,png,jpg';
-        }
+        if ($this->method == "PUT") {
 
-        if ($this->request->has('picture_cover') && $this->request->picture_cover && !is_null($this->request->picture_cover)) {
-            $rules['picture_cover'] = 'image|required|mimes:jpeg,png,jpg';
-        }
+            if ($this->files->has('cv_file')) {
+                $rules['cv_file'] =  'file|required|mimes:pdf|max:1024';
+            }
 
-        if ($this->request->has('picture_about') && $this->request->picture_about && !is_null($this->request->picture_about)) {
-            $rules['picture_about'] = 'image|required|mimes:jpeg,png,jpg';
+            if ($this->files->has('picture_cover')) {
+                $rules['picture_cover'] =  'image|required|mimes:jpeg,png,jpg';
+            }
+
+            if ($this->files->has('picture_about')) {
+                $rules['picture_about'] =  'image|required|mimes:jpeg,png,jpg';
+            }
+
+            if ($this->files->has('smo_image')) {
+                $rules['smo_image'] =  'image|required|mimes:jpeg,png,jpg';
+            }
         }
 
         return $rules;

@@ -6,13 +6,13 @@
         <div class="col-md-8 ">
             <div class="card">
                 <h5 class="text-center mt-2 mb-3 text-uppercase"><b>Edit Profile Information</b></h5>
-                <div class="card-body mt-2">
+                <div class="card-body mt-2 font-16">
                     <form method="POST" action="{{ route('profiles.update',['profile'=>$profile->id]) }}" enctype="multipart/form-data">
                         @method('PUT')
                         @csrf
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="full_name" class="font-weight-bold">Full Name</label>
+                                <label for="full_name" class="">Full Name</label>
                                 <input type="text" name="full_name" value="{{ old('full_name') ?:$profile->full_name  }}" class="form-control @error('full_name') is-invalid @enderror " id="full_name">
                                 @error('full_name')
                                 <div class="invalid-feedback">{{ $message }}</div>
@@ -20,7 +20,7 @@
 
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="cv_name" class="font-weight-bold">CV Name</label>
+                                <label for="cv_name" class="">CV Name</label>
                                 <input type="text" name="cv_name" value="{{ old('cv_name') ?:$profile->cv_name }}" class="form-control @error('cv_name') is-invalid @enderror " id="cv_name">
                                 @error('cv_name')
                                 <div class="invalid-feedback">{{ $message }}</div>
@@ -29,14 +29,14 @@
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="email" class="font-weight-bold">Email</label>
+                                <label for="email" class="">Email</label>
                                 <input type="email" name="email" value="{{ old('email') ?:$profile->email }}" class="form-control @error('email') is-invalid @enderror " id="email">
                                 @error('email')
                                 <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="phone" class="font-weight-bold">Phone</label>
+                                <label for="phone" class="">Phone</label>
                                 <input type="text" name="phone" value="{{ old('phone') ?:$profile->phone }}" class="form-control @error('phone') is-invalid @enderror " id="phone">
                                 @error('phone')
                                 <div class="invalid-feedback">{{ $message }}</div>
@@ -46,7 +46,7 @@
 
                         <div class="form-row">
                             <div class="form-group col-md-4">
-                                <label for="city" class="font-weight-bold">City</label>
+                                <label for="city" class="">City</label>
                                 <input type="text" name="city" value="{{ old('city') ?:$profile->city }}" class="form-control @error('city') is-invalid @enderror " id="city">
                                 @error('city')
                                 <div class="invalid-feedback">{{ $message }}</div>
@@ -109,14 +109,23 @@
                         </div>
 
                         <div class="form-row">
-                            <div class="form-group col-md-6">
+
+                            <div class="form-group col-md-4">
+                                <label for="cv_file">CV Upload</label>
+                                <input type="file" name="cv_file" value="{{ old('cv_file') ?:$profile->cv_file }}" class="form-control @error('cv_file') is-invalid @enderror " id="cv_file">
+                                @error('cv_file')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <div class="form-group col-md-4">
                                 <label for="picture_cover">Picture Cover</label>
                                 <input type="file" name="picture_cover" value="{{ old('picture_cover') ?:$profile->picture_cover }}" class="form-control @error('picture_cover') is-invalid @enderror " id="picture_cover">
                                 @error('picture_cover')
                                 <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-4">
                                 <label for="picture_about">Picture About</label>
                                 <input type="file" name="picture_about" value="{{ old('picture_about') ?:$profile->picture_about }}" class="form-control @error('picture_about') is-invalid @enderror " id="picture_about">
                                 @error('picture_about')

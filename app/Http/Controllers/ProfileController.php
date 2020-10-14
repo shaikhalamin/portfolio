@@ -24,7 +24,7 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        $profile =  Profile::find(1);
+        $profile =  Profile::where('email', 'alamin.cse15@gmail.com')->first();
 
         //dd($profile);
         return view('profile', compact('profile'));
@@ -32,8 +32,9 @@ class ProfileController extends Controller
 
     public function indexAdmin()
     {
-        $profiles = Profile::orderBy('created_at', 'desc')->paginate(10);
-
+        //$profiles = Profile::orderBy('created_at', 'desc')->paginate(10);
+        $profiles = Profile::where('user_id', auth()->user()->id)->orderBy('created_at', 'desc')->get();
+        //dd($profiles);
         return view('admin.profile.index', compact('profiles'));
     }
 
@@ -107,11 +108,13 @@ class ProfileController extends Controller
         $profile->profile_meta_descriptions = $request->profile_meta_descriptions;
 
         //search engine optimization internal meta image upload using intervention image
-        $smoImageFile = $request->file('smo_image');
-        $smoImageName = md5($request->cv_name) . '.' . $smoImageFile->getClientOriginalExtension();
-        Image::make($smoImageFile)->save(public_path('/assets/images/') . $smoImageName);
+        if ($request->hasFile('smo_image')) {
+            $smoImageFile = $request->file('smo_image');
+            $smoImageName = md5($request->cv_name) . '.' . $smoImageFile->getClientOriginalExtension();
+            Image::make($smoImageFile)->save(public_path('/assets/images/') . $smoImageName);
 
-        $profile->smo_image = $smoImageName;
+            $profile->smo_image = $smoImageName;
+        }
 
         $profile->user_id = auth()->user()->id;
 
@@ -181,7 +184,7 @@ class ProfileController extends Controller
                     $request->cv_file->move(public_path('/assets/docs/'), $cvFileName);
                     $profile->cv_file = $cvFileName;
                 } else {
-                    return redirect(route('profiles.index'))->with('error', 'User CV couldnot delete');
+                    return redirect(route('profiles.index'))->with('error', 'Profile CV couldnot delete');
                 }
             } else {
 
@@ -210,7 +213,7 @@ class ProfileController extends Controller
                     Image::make($coverImageFile)->save(public_path('/assets/images/') . $coverFileName);
                     $profile->picture_cover =  $coverFileName;
                 } else {
-                    return redirect(route('profiles.index'))->with('error', 'User cover picture couldnot delete');
+                    return redirect(route('profiles.index'))->with('error', 'Profile cover picture couldnot delete');
                 }
             } else {
                 $coverImageFile = $request->file('picture_cover');
@@ -235,7 +238,7 @@ class ProfileController extends Controller
                     Image::make($aboutPictureFile)->save(public_path('/assets/images/') . $aboutPictureName);
                     $profile->picture_about             = $aboutPictureName;
                 } else {
-                    return redirect(route('profiles.index'))->with('error', 'User about picture couldnot delete');
+                    return redirect(route('profiles.index'))->with('error', 'Profile about picture couldnot delete');
                 }
             } else {
                 $aboutPictureFile = $request->file('picture_about');
@@ -266,7 +269,7 @@ class ProfileController extends Controller
                     Image::make($smoImageFile)->save(public_path('/assets/images/') . $smoImageName);
                     $profile->smo_image = $smoImageName;
                 } else {
-                    return redirect(route('profiles.index'))->with('error', 'User smo picture couldnot delete');
+                    return redirect(route('profiles.index'))->with('error', 'Profile smo picture couldnot delete');
                 }
             } else {
 

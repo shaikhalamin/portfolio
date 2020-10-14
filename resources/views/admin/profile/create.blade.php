@@ -6,7 +6,7 @@
         <div class="col-md-8 ">
             <div class="card">
                 <h5 class="text-center mt-2 mb-3 text-uppercase"><b>Add Profile Information</b></h5>
-                <div class="card-body mt-2">
+                <div class="card-body mt-2 font-16">
                     <form method="POST" action="{{ route('profiles.store') }}" enctype="multipart/form-data">
                         @csrf
                         <div class="form-row">

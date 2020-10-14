@@ -19,7 +19,8 @@ class ExperienceController extends Controller
      */
     public function index()
     {
-        $experiences =  Experience::orderBy('date_from', 'desc')->get();
+        $profileId = auth()->user()->profile ? auth()->user()->profile->id : 0;
+        $experiences =  Experience::where('profile_id', $profileId)->orderBy('date_from', 'desc')->get();
 
         //dd($profile);
         return view('admin.experience.index', compact('experiences'));
@@ -32,6 +33,9 @@ class ExperienceController extends Controller
      */
     public function create()
     {
+        if (!isset(auth()->user()->profile)) {
+            return redirect(route('experiences.index'))->with('error', 'Please add your profile first !');
+        }
         return view('admin.experience.create');
     }
 
@@ -43,7 +47,9 @@ class ExperienceController extends Controller
      */
     public function store(ExperienceRequest $request)
     {
-
+        if (!isset(auth()->user()->profile)) {
+            return redirect(route('experiences.index'))->with('error', 'Please add your profile first !');
+        }
         //dd($request->all());
 
         $experience = new Experience();
@@ -61,7 +67,7 @@ class ExperienceController extends Controller
         $experience->date_to = $request->date_to ? date('Y-m-d', strtotime($request->date_to)) : null;
         $experience->job_responsibility = $request->job_responsibility;
         $experience->work_stack = $request->work_stack;
-        $experience->profile_id = 1;
+        $experience->profile_id = auth()->user()->profile ? auth()->user()->profile->id : 1;
         $experience->user_id = auth()->user()->id;
 
         $experience->save();
@@ -101,6 +107,8 @@ class ExperienceController extends Controller
     public function update(ExperienceRequest $request, Experience $experience)
     {
         //dd($request->all());
+        //dd(auth()->user()->profile->id);
+
         $experience->company_name = $request->company_name;
         $experience->company_email = $request->company_email;
         $experience->company_phone = $request->company_phone;
@@ -115,7 +123,7 @@ class ExperienceController extends Controller
         $experience->date_to = $request->date_to ? date('Y-m-d', strtotime($request->date_to)) : $experience->date_to;
         $experience->job_responsibility = $request->job_responsibility;
         $experience->work_stack = $request->work_stack;
-        $experience->profile_id = 1;
+        $experience->profile_id = auth()->user()->profile ? auth()->user()->profile->id : 1;
         $experience->user_id = auth()->user()->id;
 
         $experience->save();
