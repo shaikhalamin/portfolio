@@ -98,9 +98,29 @@ class ExperienceController extends Controller
      * @param  \App\Experience  $experience
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Experience $experience)
+    public function update(ExperienceRequest $request, Experience $experience)
     {
-        //
+        //dd($request->all());
+        $experience->company_name = $request->company_name;
+        $experience->company_email = $request->company_email;
+        $experience->company_phone = $request->company_phone;
+        $experience->company_location = $request->company_location;
+        $experience->company_city = $request->company_city;
+        $experience->company_country = $request->company_country;
+        $experience->company_website = $request->company_website;
+        $experience->project_website = $request->project_website;
+        $experience->designation = $request->designation;
+        $experience->job_type = $request->job_type;
+        $experience->date_from = $request->date_from ? date('Y-m-d', strtotime($request->date_from)) : $experience->date_from;
+        $experience->date_to = $request->date_to ? date('Y-m-d', strtotime($request->date_to)) : $experience->date_to;
+        $experience->job_responsibility = $request->job_responsibility;
+        $experience->work_stack = $request->work_stack;
+        $experience->profile_id = 1;
+        $experience->user_id = auth()->user()->id;
+
+        $experience->save();
+
+        return redirect(route('experiences.index'))->with('created', 'User experience updated successfully');
     }
 
     /**
