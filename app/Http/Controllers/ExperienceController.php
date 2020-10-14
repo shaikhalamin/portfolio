@@ -88,7 +88,7 @@ class ExperienceController extends Controller
      */
     public function edit(Experience $experience)
     {
-        //
+        return view('admin.experience.edit', compact('experience'));
     }
 
     /**

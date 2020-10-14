@@ -16,3 +16,29 @@ html,body {
     font-size: 16px;
   }
 
+  .font-18{
+    font-size: 18px;
+  }
+
+  .font-bold{
+    font-weight: bold;
+  }
+
+  .custom-btn-warning{
+    background-color:#ffc107 !important;
+    border-color: #ffc107 !important;
+  }
+  .custom-btn-warning:hover{
+    
+    color: white;
+    border-color: #ffc107 !important;
+  }
+
+  .custom-btn-info{
+    background-color: #17A2C2 !important;
+  }
+
+  .custom-text-info{
+    color: #17A2C2!important;
+  }
+
