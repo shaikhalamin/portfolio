@@ -16,7 +16,21 @@ class ProfileController extends Controller
         $this->middleware('auth', ['except' => ['index', 'downloadCv']]);
     }
 
+    /*
+    Eger loading examples 
 
+    $books = App\Book::with(['author: id, name, email', 'author.contacts', 'author.publishers'])->get();
+    $books = App\Book::with(['author: id, name, email' => function ($query) {
+                                          $query->where('title', 'like', '%first%');
+                                     }, 'email', 'author.contacts', 'author.publishers'])->get();
+    
+    $posts = Post::withCount([
+    'comments',
+    'comments as active_comments' => function (Builder $query) {
+        $query->where('approved', 1);
+    }
+    ])->get();
+    */
     /**
      * Display a listing of the resource.
      *
@@ -24,7 +38,7 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        $profile =  Profile::where('email', 'alamin.cse15@gmail.com')->first();
+        $profile =  Profile::where('email', 'alamin.cse15@gmail.com')->with('experiences')->first();
 
         //dd($profile);
         return view('profile', compact('profile'));
