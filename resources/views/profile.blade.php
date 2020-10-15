@@ -58,7 +58,13 @@
             <div class="col-md-6"><img src="{{ $profile ? asset('assets/images/').'/'.$profile->picture_about : asset('assets/images/shaikh_alamin.jpg')  }}" class="img-fluid" alt="shaikh_image"></div>
             <div class="col-md-6 border-left about-info">
                 <h4 class="text-justify ml-3 mb-3 text-dark"><span class="border-bottom-3">About</span> Me</h4>
-                <div class="text-justify ml-3 font-15">{!! $profile ? $profile->about_info : '' !!}</div>
+                <div class="text-justify ml-3 font-15">
+                    <div class="card">
+                        <div class="card-body">
+                            {!! $profile ? $profile->about_info : '' !!}
+                        </div>
+                    </div>
+                </div>
                 <p class="text-justify ml-3 font-15"></p>
                 <div class="row">
                     <div class="col-md-12 mt-2">
