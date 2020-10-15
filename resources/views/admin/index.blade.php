@@ -14,7 +14,7 @@
                                         <span class="float-left text-white mr-1"><i class="fa fa-id-badge" aria-hidden="true"></i></span>
                                         <a class="text-white" href="{{ route('profiles.index') }}">
                                             Profiles
-                                            <span class="badge badge-light ml-1">1</span>
+                                            <span class="badge badge-light ml-1">{{ $profiles->count() }}</span>
                                         </a>
                                     </h4>
                                 </div>
@@ -27,7 +27,7 @@
                                         <span class="float-left text-white mr-1"><i class="fa fa-briefcase" aria-hidden="true"></i></span>
                                         <a class="text-white" href="{{ route('experiences.index') }}">
                                             Experience
-                                            <span class="badge badge-light ml-1">3</span>
+                                            <span class="badge badge-light ml-1">{{ isset($profiles->experiences) ? $profiles->experiences->count() : 0 }}</span>
                                         </a>
                                     </h4>
                                 </div>
@@ -40,7 +40,7 @@
                                         <span class="float-left text-white mr-1"><i class="fa fa-cogs" aria-hidden="true"></i></span>
                                         <a class="text-white" href="{{ route('admin.index') }}">
                                             Skills
-                                            <span class="badge badge-light ml-1">3</span>
+                                            <span class="badge badge-light ml-1">{{ isset($profiles->skills) ? $profiles->skills->count() : 0 }}</span>
                                         </a>
                                     </h4>
                                 </div>
@@ -53,7 +53,7 @@
                                         <span class="float-left text-white mr-1"><i class="fa fa-archive" aria-hidden="true"></i></span>
                                         <a class="text-white" href="{{ route('admin.index') }}">
                                             Portfolios
-                                            <span class="badge badge-light ml-1">3</span>
+                                            <span class="badge badge-light ml-1">{{ isset($profiles->portfolios) ? $profiles->portfolios->count() : 0 }}</span>
                                         </a>
                                     </h4>
                                 </div>
@@ -66,7 +66,7 @@
                                         <span class="float-left text-white mr-1"><i class="fa fa-graduation-cap" aria-hidden="true"></i></span>
                                         <a class="text-white" href="{{ route('admin.index') }}">
                                             Degrees
-                                            <span class="badge badge-light ml-1">2</span>
+                                            <span class="badge badge-light ml-1">{{ isset($profiles->degrees) ? $profiles->degrees->count() : 0 }}</span>
                                         </a>
                                     </h4>
                                 </div>

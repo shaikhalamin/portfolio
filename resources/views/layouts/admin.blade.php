@@ -23,7 +23,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-dark shadow-sm fixed-top">
             <a class="navbar-brand" href="{{ route('admin.index') }}">
-                <h2 class="text-info text-uppercase" style="color: #17A2C2!important;font-size:33px"><b>Dev Admin</b></h2>
+                <h2 class="text-info text-uppercase mt-2" style="color: #17A2C2!important;font-size:33px"><b class="">Dev Admin</b></h2>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                 <span class="navbar-toggler-icon"></span>
@@ -32,7 +32,12 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
-
+                    <li class="nav-item active navbar-menu">
+                        <a class="nav-link text-white font-18" href="{{ url('/') }}">
+                            <span class="float-left text-white mr-1"><i class="fa fa-home" aria-hidden="true"></i></span>
+                            HOME
+                        </a>
+                    </li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->

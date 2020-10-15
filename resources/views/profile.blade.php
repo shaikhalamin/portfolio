@@ -34,6 +34,10 @@
             <div class="col-md-12 text-center">
                 <h1 class="text-white"><b><span class="i-am">I'm</span> {{ $profile ? $profile->full_name : '' }}</b></h1>
                 <h2 class="text-white" style="font-size: 1.125rem;">{{ $profile ? $profile->designation .' | '.$profile->specialized_at : '' }}</h2>
+                <p class="mt-2 mb-2">
+                    <i class="fa fa-envelope-o mr-1" aria-hidden="false" style="font-size: 18px; color:rgb(255, 255, 255)"></i>
+                    <span class="text-white font-18">{{ $profile ? $profile->email : '' }}</span>
+                </p>
                 <div class="row">
                     <div class="col-md-6 offset-md-3 mb-3 mt-2"><a href="{{ route('profiles.download_cv',['profile_id'=> $profile ? $profile->id : 0]) }}" class="btn btn-sm btn-outline-info text-white" target="_blank" rel="noopener noreferrer">Download CV</a><button type="button" class="btn btn-sm btn-outline-danger text-white ml-2 custom-btn-warning">Hire Me</button></div>
                 </div>
@@ -42,6 +46,7 @@
                     <li class="nav-item"><a class="btn btn-sm" target="_blank" href="{{ $profile ? $profile->github_profile_path : '/' }}"><i class="fa fa-github-square " aria-hidden="true" style="font-size: 25px;color:rgb(255, 255, 255) "></i></a></li>
                     <li class="nav-item"><a class="btn btn-sm" target="_blank" href="{{ $profile ? $profile->twitter_profile_path : '/' }}"><i class="fa fa-twitter-square" aria-hidden="true" style="font-size: 25px; color:rgb(255, 255, 255)"></i></a></li>
                 </ul>
+
             </div>
         </div>
     </div>
@@ -76,68 +81,46 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6">
+            @if(isset($profile->experiences) && $profile->experiences->count() > 0)
+            @foreach($profile->experiences as $key=>$experience)
+            @if($experience)
+            <div class="col-md-6 mb-5">
                 <div class="card">
                     <div class="card-header" style="background-color: rgb(255, 255, 255);">
-                        <h6><a href="https://www.wipro.com/"><b>Wipro Limited</b> <span class="text-dark">Dhaka-Bangladesh</span></a></h6>
-                        <p class="font-15"><span><b>Senior Software Engineer </b></span> | SEPTEMBER 2019 - PRESENT</p>
+                        <h6><a href="{{ $experience->company_website }}"><b>{{ $experience->company_name }}</b> <span class="text-dark">{{ $experience->company_city }} - {{ $experience->company_country }}</span></a></h6>
+                        <p class="font-15"><span><b>{{ $experience->designation }} </b></span> | {{ $experience->date_from ? date('F Y',strtotime($experience->date_from)) : '' }} - {{ $experience->date_to ? date('F Y',strtotime($experience->date_to)):'PRESENT' }}</p>
                     </div>
                     <div class="card-body">
-                        <ul class="font-14">
-                            <li class="mt-1 mb-1">Adding new features,system design and implementation to an ERP project using Agile Scrum.</li>
-                            <li class="mt-1 mb-1">Provide REST API to Android and IOS Team.</li>
-                            <li class="mt-1 mb-1">Develop admin UI for system support.</li>
-                            <li class="mt-1 mb-1">Solve real-time problems occuring in production related to UI, Backend, and Databases.</li>
-                        </ul>
+                        <div class="font-14">
+                            {!! $experience->job_responsibility !!}
+                        </div>
                         <ul class="nav justify-content-center">
-                            <li class="nav-item"><a class="btn btn-sm" href="/"><b>CAKE <span class="text-danger">PHP</span></b></a></li>
-                            <li class="nav-item"><a class="btn btn-sm" href="/"><b>My<span class="text-warning">SQL</span></b></a></li>
-                            <li class="nav-item"><a class="btn btn-sm text-info" href="/"><b>REST</b></a></li>
-                            <li class="nav-item"><a class="btn btn-sm" href="/"><span class="bg-warning text-white" style="padding: 3px; border-radius: 5px;"><b>Javascript</b></span></a></li>
-                            <li class="nav-item"><a class="btn btn-sm " href="/"><span class="bg-primary text-white" style="padding: 3px; border-radius: 5px;"><b>JQuery</b></span></a></li>
-                            <li class="nav-item"><a class="btn btn-sm" href="/"><span class="text-white" style="background-color: rgb(86, 61, 124); padding: 3px; border-radius: 5px;"><b>Bootstrap</b></span></a></li>
+                            @php
+
+                            $colorArray = ['primary','info','success','warning','info','success','dark','danger'];
+                            shuffle($colorArray);
+
+                            @endphp
+
+                            @foreach(explode(',',$experience->work_stack) as $key=>$stack)
+                            <li class="nav-item mr-1">
+                                <p class="font-13 "><b><span class="badge badge-{{ $colorArray[$key] }}">{{ $stack }}</span></b></p>
+                            </li>
+                            @endforeach
                         </ul>
                     </div>
                     <div class="card-footer bg-light">
                         <ul class="nav justify-content-center">
-                            <li class="nav-item"><a class="btn btn-sm" href="https://www.linkedin.com/in/shaikh-al-amin/"><i class="fa fa-linkedin-square" aria-hidden="true" style="font-size: 25px; color: rgb(0, 0, 0);"></i></a></li>
-                            <li class="nav-item"><a class="btn btn-sm" href="https://github.com/shaikhalamin"><i class="fa fa-github-square" aria-hidden="true" style="font-size: 25px; color: rgb(0, 0, 0);"></i></a></li>
-                            <li class="nav-item"><a class="btn btn-sm" href="https://twitter.com/shaikhalamin015"><i class="fa fa-twitter-square" aria-hidden="true" style="font-size: 25px; color: rgb(0, 0, 0);"></i></a></li>
+                            <li class="nav-item"><a class="btn btn-sm" target="_blank" href="{{ $profile ? $profile->linkedin_profile_path : '/' }}"><i class="fa fa-linkedin-square" aria-hidden="true" style="font-size: 25px; color: rgb(0, 0, 0);"></i></a></li>
+                            <li class="nav-item"><a class="btn btn-sm" target="_blank" href="{{ $profile ? $profile->github_profile_path : '/' }}"><i class="fa fa-github-square" aria-hidden="true" style="font-size: 25px; color: rgb(0, 0, 0);"></i></a></li>
+                            <li class="nav-item"><a class="btn btn-sm" target="_blank" href="{{ $profile ? $profile->twitter_profile_path : '/' }}"><i class="fa fa-twitter-square" aria-hidden="true" style="font-size: 25px; color: rgb(0, 0, 0);"></i></a></li>
                         </ul>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header" style="background-color: rgb(255, 255, 255);">
-                        <h6><a href="https://teamamericany.com/index.php/home/start"><b>Teamnet(USA BASED)</b> <span class="text-dark">Dhaka-Bangladesh</span></a></h6>
-                        <p class="font-15"><span><b>Software Engineer</b></span> | NOVEMBER 2016 - AUGUST 2019</p>
-                    </div>
-                    <div class="card-body">
-                        <ul class="font-14">
-                            <li class="mt-1 mb-1">Design &amp; Rebuild old ecommerce travel booking web application - <a href="https://volatour.com/">Volatour</a></li>
-                            <li class="mt-1 mb-1">Integrate SOAP API with other Backend service.</li>
-                            <li class="mt-1 mb-1">Develop admin UI for system support.</li>
-                            <li class="mt-1 mb-1">Solve real-time problems occuring in production related to UI, Backend, and Databases.</li>
-                        </ul>
-                        <ul class="nav justify-content-center">
-                            <li class="nav-item"><a class="btn btn-sm" href="/"><b><span class="text-danger">Laravel</span></b></a></li>
-                            <li class="nav-item"><a class="btn btn-sm" href="/"><b>My<span class="text-warning">SQL</span></b></a></li>
-                            <li class="nav-item"><a class="btn btn-sm text-info" href="/"><b>SOAP</b></a></li>
-                            <li class="nav-item"><a class="btn btn-sm" href="/"><span class="bg-warning text-white" style="padding: 3px; border-radius: 5px;"><b>Javascript</b></span></a></li>
-                            <li class="nav-item"><a class="btn btn-sm " href="/"><span class="bg-primary text-white" style="padding: 3px; border-radius: 5px;"><b>JQuery</b></span></a></li>
-                            <li class="nav-item"><a class="btn btn-sm" href="/"><span class="text-white" style="background-color: rgb(86, 61, 124); padding: 3px; border-radius: 5px;"><b>Bootstrap</b></span></a></li>
-                        </ul>
-                    </div>
-                    <div class="card-footer bg-light">
-                        <ul class="nav justify-content-center">
-                            <li class="nav-item"><a class="btn btn-sm" href="https://www.linkedin.com/in/shaikh-al-amin/"><i class="fa fa-linkedin-square" aria-hidden="true" style="font-size: 25px; color: rgb(0, 0, 0);"></i></a></li>
-                            <li class="nav-item"><a class="btn btn-sm" href="https://github.com/shaikhalamin"><i class="fa fa-github-square" aria-hidden="true" style="font-size: 25px; color: rgb(0, 0, 0);"></i></a></li>
-                            <li class="nav-item"><a class="btn btn-sm" href="https://twitter.com/shaikhalamin015"><i class="fa fa-twitter-square" aria-hidden="true" style="font-size: 25px; color: rgb(0, 0, 0);"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            @endif
+            @endforeach
+            @endif
         </div>
     </div>
 </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Profile;
 use Illuminate\Http\Request;
 
 
@@ -15,7 +16,8 @@ class AdminController extends Controller
 
     public function index()
     {
-
-        return view('admin.index');
+        $profiles = Profile::where('user_id', auth()->user()->id)->with(['experiences'])->orderBy('created_at', 'desc')->first();
+        //dd($profiles->experiences->count());
+        return view('admin.index', compact('profiles'));
     }
 }

@@ -3,11 +3,14 @@
 @section('content')
 <section class="">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12 ml-2">
             @include('partials.admin.flash_message')
-            <h4 class="mt-2 mb-2">Profiles</h4>
+            <h4 class="mt-3 mb-1">Profiles</h4>
+            @if($profiles->count() == 0)
             <a href="{{ route('profiles.create') }}" class="btn btn-sm btn-primary text-white">
-                <i class="fa fa-plus" aria-hidden="true"></i> Create Profile</a>
+                <i class="fa fa-plus" aria-hidden="true"></i> Create Profile
+            </a>
+            @endif
             <hr>
         </div>
     </div>

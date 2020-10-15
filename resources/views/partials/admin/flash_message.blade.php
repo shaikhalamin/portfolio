@@ -1,5 +1,5 @@
 @if (session('created'))
-<div class="row">
+<div class="row mt-3">
     <div class="col-md-6">
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             {{ session('created') }}
@@ -12,7 +12,7 @@
 @endif
 
 @if (session('error'))
-<div class="row">
+<div class="row mt-3">
     <div class="col-md-6">
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
             {{ session('error') }}

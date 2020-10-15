@@ -15,6 +15,6 @@ class Profile extends Model
 
     public function experiences()
     {
-        return $this->hasMany('App\Experience');
+        return $this->hasMany('App\Experience')->orderBy('date_from', 'desc');
     }
 }

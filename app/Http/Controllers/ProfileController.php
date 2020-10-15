@@ -40,15 +40,14 @@ class ProfileController extends Controller
     {
         $profile =  Profile::where('email', 'alamin.cse15@gmail.com')->with('experiences')->first();
 
-        //dd($profile);
+        //dd($profile->experiences);
         return view('profile', compact('profile'));
     }
 
     public function indexAdmin()
     {
-        //$profiles = Profile::orderBy('created_at', 'desc')->paginate(10);
+
         $profiles = Profile::where('user_id', auth()->user()->id)->orderBy('created_at', 'desc')->get();
-        //dd($profiles);
         return view('admin.profile.index', compact('profiles'));
     }
 
@@ -59,6 +58,10 @@ class ProfileController extends Controller
      */
     public function create()
     {
+        $profiles = Profile::where('user_id', auth()->user()->id)->get();
+        if ($profiles->count() > 0) {
+            return redirect(route('profiles.index'))->with('error', 'Profile already added!');
+        }
         return view('admin.profile.create');
     }
 
