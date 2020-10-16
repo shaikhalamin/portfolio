@@ -58,9 +58,9 @@
             <div class="col-md-6"><img src="{{ $profile ? asset('assets/images/').'/'.$profile->picture_about : asset('assets/images/shaikh_alamin.jpg')  }}" class="img-fluid" alt="shaikh_image"></div>
             <div class="col-md-6 border-left about-info">
                 <h4 class="text-justify ml-3 mb-3 text-dark"><span class="border-bottom-3">About</span> Me</h4>
-                <div class="text-justify ml-3 font-15">
+                <div class="ml-3 font-15">
                     <div class="card">
-                        <div class="card-body">
+                        <div class="card-body text-justify">
                             {!! $profile ? $profile->about_info : '' !!}
                         </div>
                     </div>
@@ -101,7 +101,7 @@
                                 $colorArray = ['success','primary','info'];
 
                                 @endphp
-                                <button class="mt-2 mb-1 btn btn-sm btn-outline-{{ isset($colorArray[$key]) ? $colorArray[$key] : $colorArray[0] }} text-white {{ $experience->date_to ? '' : 'active show' }}" id="v-pills-{{ strtolower(substr($experience->designation,0,2).substr($experience->company_name,0,3)) }}-tab" data-toggle="pill" href="#v-pills-{{ strtolower(substr($experience->designation,0,2).substr($experience->company_name,0,3)) }}" role="tab" aria-controls="v-pills-{{ strtolower(substr($experience->designation,0,2).substr($experience->company_name,0,3)) }}" aria-selected="{{ $experience->date_to ? 'true' : 'false' }}">
+                                <button class="mt-2 mb-1 btn btn-sm btn-outline-{{ isset($colorArray[$key]) ? $colorArray[$key] : $colorArray[0] }} text-white {{ $experience->date_to ? '' : 'active show' }}" id="v-pills-{{ strtolower(substr($experience->designation,0,2).substr($experience->company_name,0,3)).md5($experience->designation) }}-tab" data-toggle="pill" href="#v-pills-{{ strtolower(substr($experience->designation,0,2).substr($experience->company_name,0,3)).md5($experience->designation) }}" role="tab" aria-controls="v-pills-{{ strtolower(substr($experience->designation,0,2).substr($experience->company_name,0,3)).md5($experience->designation) }}" aria-selected="{{ $experience->date_to ? 'true' : 'false' }}">
                                     <span class="font-14"><b>{{ $experience->designation }}</b></span> - <span class="font-13"><a class="text-white" target="_blank" href="{{ $experience->company_website }}"><b>{{ $experience->company_name }}</b></a></span>
                                     <span class="float-right text-white"><i class="fa fa-angle-double-right " aria-hidden="true"></i></span>
                                 </button>
@@ -118,7 +118,7 @@
                                 @if(isset($profile->experiences) && $profile->experiences->count() > 0)
                                 @foreach($profile->experiences as $key=>$experience)
                                 @if($experience)
-                                <div class="tab-pane fade {{ $experience->date_to ? '' : 'active show' }}" id="v-pills-{{ strtolower(substr($experience->designation,0,2).substr($experience->company_name,0,3)) }}" role="tabpanel" aria-labelledby="v-pills-{{ strtolower(substr($experience->designation,0,2).substr($experience->company_name,0,3)) }}-tab">
+                                <div class="tab-pane fade {{ $experience->date_to ? '' : 'active show' }}" id="v-pills-{{ strtolower(substr($experience->designation,0,2).substr($experience->company_name,0,3)).md5($experience->designation) }}" role="tabpanel" aria-labelledby="v-pills-{{ strtolower(substr($experience->designation,0,2).substr($experience->company_name,0,3)).md5($experience->designation) }}-tab">
                                     <div class="card">
                                         <div class="card-header" style="background-color: rgb(255, 255, 255);">
                                             <h6><a href="{{ $experience->company_website }}"><b>{{ $experience->company_name }}</b> <span class="text-dark">{{ $experience->company_city }} - {{ $experience->company_country }}</span></a></h6>
