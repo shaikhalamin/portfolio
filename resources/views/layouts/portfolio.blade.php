@@ -68,6 +68,11 @@
                         <li class="nav-item active">
                             <a class="btn btn-sm btn-info btn-block text-white mt-1 ml-1" style="background-color:#17A2C2!important;" href="#">CONTACT INFO</a>
                         </li>
+                        @auth
+                        <li class="nav-item active navbar-menu">
+                            <a class="nav-link text-white ml-1" href="{{ route('admin.index') }}">ADMIN</a>
+                        </li>
+                        @endauth
                     </ul>
                 </div>
             </div>

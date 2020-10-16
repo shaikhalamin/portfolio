@@ -104,7 +104,7 @@
 
                             <div class="form-group col-md-6">
                                 <label for="date_from">From Date</label>
-                                <input type="text" name="date_from" value="{{ old('date_from') ?:$experience->date_from }}" class="form-control @error('date_from') is-invalid @enderror " id="date_from">
+                                <input type="text" name="date_from" value="{{ old('date_from') ?:$experience->date_from }}" class="form-control @error('date_from') is-invalid @enderror " id="date_from" autocomplete="off">
                                 @error('date_from')
                                 <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
@@ -112,7 +112,7 @@
 
                             <div class="form-group col-md-6">
                                 <label for="date_to">To Date</label>
-                                <input type="text" name="date_to" value="{{ old('date_to') ?:$experience->date_to }}" class="form-control @error('date_to') is-invalid @enderror " id="date_to">
+                                <input type="text" name="date_to" value="{{ old('date_to') ?:$experience->date_to }}" class="form-control @error('date_to') is-invalid @enderror " id="date_to" autocomplete="off">
                                 @error('date_to')
                                 <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
@@ -159,6 +159,14 @@
 <script src="https://cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
 <script>
     CKEDITOR.replace('job_responsibility');
+
+    $("#date_from").datepicker({
+        dateFormat: "yy-mm-dd",
+    });
+    $("#date_to").datepicker({
+        dateFormat: "yy-mm-dd",
+        minDate: 0
+    });
 </script>
 
 @endsection

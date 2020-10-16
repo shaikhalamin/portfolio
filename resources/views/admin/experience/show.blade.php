@@ -5,7 +5,7 @@
 
     <div class="row">
         <div class="col-md-12 mt-3">
-            <h4 class="mt-2 mb-3"><b>Profiles Details</b></h4>
+            <h4 class="mt-2 mb-3"><b>Experience Details</b></h4>
             <hr>
             <div class="card">
                 <div class="card-body">

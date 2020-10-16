@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-12">
             @include('partials.admin.flash_message')
-            <h4 class="mt-2 mb-2">Experiences</h4>
+            <h4 class="mt-3 mb-2">Experiences</h4>
             <a href="{{ route('experiences.create') }}" class="btn btn-sm btn-primary text-white">
                 <i class="fa fa-plus" aria-hidden="true"></i> Add Experience</a>
             <hr>

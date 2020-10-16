@@ -223,6 +223,10 @@
 <script src="https://cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
 <script>
     CKEDITOR.replace('about_info');
+
+    $("#date_of_birth").datepicker({
+        dateFormat: "yy-mm-dd",
+    });
 </script>
 
 @endsection
