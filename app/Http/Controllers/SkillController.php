@@ -14,9 +14,8 @@ class SkillController extends Controller
      */
     public function index()
     {
-        $profileId = auth()->user()->profile ? auth()->user()->profile->id : 0;
-        $skills =  Skill::where('profile_id', $profileId)->get();
-        dd($skills);
+        $profileId = isset(auth()->user()->profile) ? auth()->user()->profile->id : 0;
+        $skills =  Skill::where('profile_id', $profileId)->orderBy('created_at', 'desc')->paginate(8);
         return view('admin.skill.index', compact('skills'));
     }
 
@@ -27,7 +26,10 @@ class SkillController extends Controller
      */
     public function create()
     {
-        //
+        if (!isset(auth()->user()->profile)) {
+            return redirect(route('skills.index'))->with('error', 'Please add your profile first !');
+        }
+        return view('admin.skill.create');
     }
 
     /**
@@ -38,7 +40,25 @@ class SkillController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'type' => 'required|max:25',
+            'main_stack' => 'required|max:25',
+        ]);
+
+        $skill = new Skill();
+        $skill->type = $request->type;
+        $skill->functional_type = $request->functional_type;
+        $skill->main_stack = $request->main_stack;
+        $skill->framework_1 = $request->framework_1;
+        $skill->framework_2 = $request->framework_2;
+        $skill->framework_3 = $request->framework_3;
+        $skill->framework_library = $request->framework_library;
+        $skill->profile_id = auth()->user()->profile ? auth()->user()->profile->id : 0;
+        $skill->user_id = auth()->user()->id;
+
+        $skill->save();
+
+        return redirect(route('skills.index'))->with('created', 'Skill added sucessfully');
     }
 
     /**
@@ -60,7 +80,7 @@ class SkillController extends Controller
      */
     public function edit(Skill $skill)
     {
-        //
+        return view('admin.skill.edit', compact('skill'));
     }
 
     /**
@@ -72,7 +92,24 @@ class SkillController extends Controller
      */
     public function update(Request $request, Skill $skill)
     {
-        //
+        $validatedData = $request->validate([
+            'type' => 'required|max:25',
+            'main_stack' => 'required|max:25',
+        ]);
+
+        $skill->type = $request->type;
+        $skill->functional_type = $request->functional_type;
+        $skill->main_stack = $request->main_stack;
+        $skill->framework_1 = $request->framework_1;
+        $skill->framework_2 = $request->framework_2;
+        $skill->framework_3 = $request->framework_3;
+        $skill->framework_library = $request->framework_library;
+        $skill->profile_id = auth()->user()->profile ? auth()->user()->profile->id : 1;
+        $skill->user_id = auth()->user()->id;
+
+        $skill->save();
+
+        return redirect(route('skills.index'))->with('created', 'Skill updated sucessfully');
     }
 
     /**

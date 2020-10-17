@@ -15,7 +15,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link font-16" href="#">
+            <a class="nav-link font-16" href="{{ route('skills.index') }}">
                 <span class="float-left text-white mr-1"><i class="fa fa-cogs" aria-hidden="true"></i></span>
                 <span class="text-white ">Skills</span>
                 <span class="float-right text-white"><i class="fa fa-angle-double-right " aria-hidden="true"></i></span>

@@ -67,7 +67,7 @@ class ExperienceController extends Controller
         $experience->date_to = $request->date_to ? date('Y-m-d', strtotime($request->date_to)) : null;
         $experience->job_responsibility = $request->job_responsibility;
         $experience->work_stack = $request->work_stack;
-        $experience->profile_id = auth()->user()->profile ? auth()->user()->profile->id : 1;
+        $experience->profile_id = auth()->user()->profile ? auth()->user()->profile->id : 0;
         $experience->user_id = auth()->user()->id;
 
         $experience->save();
@@ -123,7 +123,7 @@ class ExperienceController extends Controller
         $experience->date_to = $request->date_to ? date('Y-m-d', strtotime($request->date_to)) : $experience->date_to;
         $experience->job_responsibility = $request->job_responsibility;
         $experience->work_stack = $request->work_stack;
-        $experience->profile_id = auth()->user()->profile ? auth()->user()->profile->id : 1;
+        $experience->profile_id = auth()->user()->profile ? auth()->user()->profile->id : 0;
         $experience->user_id = auth()->user()->id;
 
         $experience->save();

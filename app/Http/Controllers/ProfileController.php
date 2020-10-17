@@ -38,13 +38,10 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        //$profile =  Profile::where('email', 'alamin.cse15@gmail.com')->with('experiences')->first();
-
         $profile =  cache()->remember('profile', 60 * 60 * 24, function () {
-            return Profile::where('email', 'alamin.cse15@gmail.com')->with('experiences')->first();
+            return Profile::where('email', 'alamin.cse15@gmail.com')->with(['experiences', 'skills'])->first();
         });
 
-        //dd($profile->experiences);
         return view('profile', compact('profile'));
     }
 

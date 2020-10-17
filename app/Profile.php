@@ -28,11 +28,16 @@ class Profile extends Model
         return $this->hasMany(Experience::class)->orderBy('date_from', 'desc');
     }
 
+    public function skills()
+    {
+        return $this->hasMany(Skill::class);
+    }
+
     public static function cacheUpdate()
     {
         cache()->forget('profile');
         cache()->remember('profile', 60 * 60 * 24, function () {
-            return Profile::where('email', 'alamin.cse15@gmail.com')->with('experiences')->first();
+            return self::where('email', 'alamin.cse15@gmail.com')->with(['experiences', 'skills'])->first();
         });
     }
 }

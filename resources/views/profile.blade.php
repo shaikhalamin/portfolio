@@ -59,7 +59,13 @@
     @if(!is_null($profile))
     <div class="container mt-5 mb-3">
         <div class="row">
-            <div class="col-md-6"><img src="{{ $profile ? asset('assets/images/').'/'.$profile->picture_about : asset('assets/images/shaikh_alamin.jpg')  }}" class="img-fluid" alt="shaikh_image"></div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <img src="{{ $profile ? asset('assets/images/').'/'.$profile->picture_about : asset('assets/images/shaikh_alamin.jpg')  }}" class="img-fluid" alt="shaikh_image">
+                    </div>
+                </div>
+            </div>
             <div class="col-md-6 border-left about-info">
                 <h4 class="text-justify ml-3 mb-3 text-dark"><span class="border-bottom-3">About</span> Me</h4>
                 <div class="ml-3 font-15">
