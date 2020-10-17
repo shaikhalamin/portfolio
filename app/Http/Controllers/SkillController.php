@@ -14,7 +14,10 @@ class SkillController extends Controller
      */
     public function index()
     {
-        //
+        $profileId = auth()->user()->profile ? auth()->user()->profile->id : 0;
+        $skills =  Skill::where('profile_id', $profileId)->get();
+        dd($skills);
+        return view('admin.skill.index', compact('skills'));
     }
 
     /**

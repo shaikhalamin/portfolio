@@ -22,6 +22,8 @@ class CreateSkillsTable extends Migration
             $table->string('framework_2')->nullable();
             $table->string('framework_3')->nullable();
             $table->string('framework_library')->nullable();
+            $table->integer('profile_id')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->timestamps();
         });
     }

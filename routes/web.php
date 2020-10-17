@@ -28,3 +28,4 @@ Route::get('profiles/cv-download/{profile_id}', 'ProfileController@downloadCv')-
 Route::resource('profiles', 'ProfileController')->except(['index']);
 
 Route::resource('experiences', 'ExperienceController');
+Route::resource('skills', 'SkillController');

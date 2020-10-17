@@ -38,7 +38,7 @@
                                 <div class="card-body bg-danger">
                                     <h4 class="font-18 text-uppercase text-white font-bold">
                                         <span class="float-left text-white mr-1"><i class="fa fa-cogs" aria-hidden="true"></i></span>
-                                        <a class="text-white" href="{{ route('admin.index') }}">
+                                        <a class="text-white" href="{{ route('skills.index') }}">
                                             Skills
                                             <span class="badge badge-light ml-1">{{ isset($profiles->skills) ? $profiles->skills->count() : 0 }}</span>
                                         </a>
