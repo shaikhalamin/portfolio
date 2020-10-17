@@ -10,11 +10,11 @@ class Profile extends Model
 
     public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo(User::class);
     }
 
     public function experiences()
     {
-        return $this->hasMany('App\Experience')->orderBy('date_from', 'desc');
+        return $this->hasMany(Experience::class)->orderBy('date_from', 'desc');
     }
 }

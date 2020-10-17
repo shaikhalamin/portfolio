@@ -24,6 +24,10 @@ html,body {
     font-weight: bold;
   }
 
+  .font-13{
+    font-size: 13px;
+}
+
   .custom-btn-warning{
     background-color:#ffc107 !important;
     border-color: #ffc107 !important;

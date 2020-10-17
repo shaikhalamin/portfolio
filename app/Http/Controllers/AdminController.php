@@ -17,7 +17,7 @@ class AdminController extends Controller
     public function index()
     {
         $profiles = Profile::where('user_id', auth()->user()->id)->with(['experiences'])->orderBy('created_at', 'desc')->first();
-        //dd($profiles->experiences->count());
+        //dd($profiles);
         return view('admin.index', compact('profiles'));
     }
 }

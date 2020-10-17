@@ -8,6 +8,6 @@ class Experience extends Model
 {
     public function profile()
     {
-        return $this->belongsTo('App\Profile');
+        return $this->belongsTo(Profile::class);
     }
 }

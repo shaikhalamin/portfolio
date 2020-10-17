@@ -32,8 +32,10 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
-                <h1 class="text-white"><b><span class="i-am">I'm</span> {{ $profile ? $profile->full_name : '' }}</b></h1>
+                <h1 class="text-white"><b><span class="i-am">{{ $profile ? "I'm" : '' }}</span> {{ $profile ? $profile->full_name : '' }}</b></h1>
                 <h2 class="text-white" style="font-size: 1.125rem;">{{ $profile ? $profile->designation .' | '.$profile->specialized_at : '' }}</h2>
+
+                @if(!is_null($profile))
                 <p class="mt-2 mb-2">
                     <i class="fa fa-envelope-o mr-1" aria-hidden="false" style="font-size: 18px; color:rgb(255, 255, 255)"></i>
                     <span class="text-white font-18">{{ $profile ? $profile->email : '' }}</span>
@@ -46,6 +48,7 @@
                     <li class="nav-item"><a class="btn btn-sm" target="_blank" href="{{ $profile ? $profile->github_profile_path : '/' }}"><i class="fa fa-github-square " aria-hidden="true" style="font-size: 25px;color:rgb(255, 255, 255) "></i></a></li>
                     <li class="nav-item"><a class="btn btn-sm" target="_blank" href="{{ $profile ? $profile->twitter_profile_path : '/' }}"><i class="fa fa-twitter-square" aria-hidden="true" style="font-size: 25px; color:rgb(255, 255, 255)"></i></a></li>
                 </ul>
+                @endif
 
             </div>
         </div>
@@ -53,6 +56,7 @@
 </div>
 
 <section class="">
+    @if(!is_null($profile))
     <div class="container mt-5 mb-3">
         <div class="row">
             <div class="col-md-6"><img src="{{ $profile ? asset('assets/images/').'/'.$profile->picture_about : asset('assets/images/shaikh_alamin.jpg')  }}" class="img-fluid" alt="shaikh_image"></div>
@@ -77,9 +81,11 @@
             </div>
         </div>
     </div>
+    @endif
 </section>
 
 <div class="row bg-light mb-5">
+    @if(!is_null($profile))
     <div class="container">
         <div class="col-md-12">
             <div class="row">
@@ -155,9 +161,7 @@
             </div>
         </div>
     </div>
+    @endif
 </div>
-
-
-
 
 @endsection

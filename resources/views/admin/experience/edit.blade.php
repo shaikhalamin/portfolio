@@ -165,7 +165,6 @@
     });
     $("#date_to").datepicker({
         dateFormat: "yy-mm-dd",
-        minDate: 0
     });
 </script>
 

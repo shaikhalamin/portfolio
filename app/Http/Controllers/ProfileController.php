@@ -38,7 +38,11 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        $profile =  Profile::where('email', 'alamin.cse15@gmail.com')->with('experiences')->first();
+        //$profile =  Profile::where('email', 'alamin.cse15@gmail.com')->with('experiences')->first();
+
+        $profile =  cache()->remember('profile', 60 * 60 * 24, function () {
+            return Profile::where('email', 'alamin.cse15@gmail.com')->with('experiences')->first();
+        });
 
         //dd($profile->experiences);
         return view('profile', compact('profile'));
@@ -48,6 +52,8 @@ class ProfileController extends Controller
     {
 
         $profiles = Profile::where('user_id', auth()->user()->id)->orderBy('created_at', 'desc')->get();
+        //dd($profiles);
+
         return view('admin.profile.index', compact('profiles'));
     }
 

@@ -14,7 +14,7 @@
                                         <span class="float-left text-white mr-1"><i class="fa fa-id-badge" aria-hidden="true"></i></span>
                                         <a class="text-white" href="{{ route('profiles.index') }}">
                                             Profiles
-                                            <span class="badge badge-light ml-1">{{ $profiles->count() }}</span>
+                                            <span class="badge badge-light ml-1">{{ $profiles ? $profiles->count() : 0 }}</span>
                                         </a>
                                     </h4>
                                 </div>

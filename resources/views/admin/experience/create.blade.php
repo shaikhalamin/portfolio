@@ -6,6 +6,7 @@
         <div class="col-md-8 ">
             <div class="card">
                 <h5 class="text-center mt-2 mb-3 text-uppercase"><b>Add Experience</b></h5>
+                <p class="text-center mt-1 mb-3 text-uppercase font-13"> <b>N:B Please add experience in a descending order</b> </p>
                 <div class="card-body mt-2">
                     <form method="POST" action="{{ route('experiences.store') }}" enctype="multipart/form-data">
                         @csrf
@@ -161,8 +162,7 @@
         dateFormat: "yy-mm-dd",
     });
     $("#date_to").datepicker({
-        dateFormat: "yy-mm-dd",
-        minDate: 0
+        dateFormat: "yy-mm-dd"
     });
 </script>
 
