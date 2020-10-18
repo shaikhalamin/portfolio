@@ -18,6 +18,15 @@ class ProfileController extends Controller
 
     /*
     Eger loading examples 
+    [N:B] in order to custom select like following we to select relational column as well other wise it will not work
+
+    $posts = Profile::where('email', 'alamin.cse15@gmail.com')->with(['skills' => function ($query) {
+            return $query->select('id', 'type', 'profile_id')->orderBy('type', 'asc')->groupBy('skills.type')->groupBy('skills.id');
+        }])->get();
+
+        dd($posts);
+
+
 
     $books = App\Book::with(['author: id, name, email', 'author.contacts', 'author.publishers'])->get();
     $books = App\Book::with(['author: id, name, email' => function ($query) {
@@ -38,6 +47,7 @@ class ProfileController extends Controller
      */
     public function index()
     {
+
         $profile =  cache()->remember('profile', 60 * 60 * 24, function () {
             return Profile::where('email', 'alamin.cse15@gmail.com')->with(['experiences', 'skills'])->first();
         });
