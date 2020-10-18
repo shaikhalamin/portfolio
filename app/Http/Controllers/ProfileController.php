@@ -42,6 +42,8 @@ class ProfileController extends Controller
             return Profile::where('email', 'alamin.cse15@gmail.com')->with(['experiences', 'skills'])->first();
         });
 
+        // dd($profile->skills->groupBy('type'));
+
         return view('profile', compact('profile'));
     }
 

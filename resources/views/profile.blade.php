@@ -150,7 +150,7 @@
 
                                                 @foreach(explode(',',$experience->work_stack) as $key=>$stack)
                                                 <li class="nav-item mr-1">
-                                                    <p class="font-13 "><b><span class="badge badge-{{ $colorArray[$key] }}">{{ $stack }}</span></b></p>
+                                                    <p class="font-13 "><b><span class="badge badge-{{ isset($colorArray[$key]) ? $colorArray[$key] : $colorArray[0] }}">{{ $stack }}</span></b></p>
                                                 </li>
                                                 @endforeach
                                             </ul>
@@ -165,6 +165,46 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+    @endif
+</div>
+
+<div class="row bg-light mb-5">
+    @if(!is_null($profile))
+    <div class="container">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-12">
+                    <h4 class="mb-4 mt-4 text-center"><span class="border-bottom-3">Skills</span></h4>
+                </div>
+            </div>
+            @if(isset($profile->skills) && $profile->skills->count() > 0)
+            <div class="row">
+                @foreach($profile->skills->groupBy('type') as $key=>$skill)
+                <div class="col-md-4 mt-2 mb-2">
+                    <div class="card" style="height: 148px;">
+                        <div class="card-body text-center">
+                            <div class="card-title text-uppercase font-14 ">
+                                <span class="border-bottom border-success">{{$key}}</span>
+                            </div>
+                            @php
+
+                            $colorArray = ['success','dark'];
+                            shuffle($colorArray);
+
+                            @endphp
+                            @foreach($skill as $key=>$point)
+                            <span class="font-13 text-uppercase badge badge-{{ isset($colorArray[$key]) ? $colorArray[$key] : $colorArray[0] }}">
+                                {{ $point->framework_library }}
+                            </span>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+            @endif
         </div>
     </div>
     @endif
