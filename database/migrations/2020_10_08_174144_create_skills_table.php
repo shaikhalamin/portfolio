@@ -19,6 +19,7 @@ class CreateSkillsTable extends Migration
             $table->string('functional_type')->nullable()->comment('like oop or functional or procedural or structured or cloud or vcs etc');
             $table->string('main_stack')->comment('like php or js or sql');
             $table->string('framework_library')->nullable()->unique();
+            $table->boolean('status')->nullable()->default(1);
             $table->integer('profile_id')->unsigned();
             $table->integer('user_id')->unsigned();
             $table->timestamps();

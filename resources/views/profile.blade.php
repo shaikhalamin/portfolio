@@ -185,17 +185,30 @@
                     <div class="row">
                         @foreach($profile->skills->groupBy('type') as $key=>$skill)
                         <div class="col-md-4 mt-2 mb-2">
-                            <div class="card" style="height: 148px;">
-                                <div class="card-body text-center">
-                                    <div class="card-title text-uppercase font-14 font-weight-bold">
+                            <div class="card mb-2" style="height: 100%">
+                                <div class="card-body mt-2">
+                                    <div class="card-title text-uppercase font-14 font-weight-bold text-center">
                                         <span class="border-bottom border-success">{{$key}}</span>
                                     </div>
+                                    <ul style="list-style-type:none">
+                                        @php
 
-                                    @foreach($skill as $key=>$point)
-                                    <span class="font-13 text-uppercase badge badge-primary">
-                                        {{ $point->framework_library }}
-                                    </span>
-                                    @endforeach
+                                        $colorArray = ['primary','dark'];
+                                        shuffle($colorArray);
+
+                                        @endphp
+                                        @foreach($skill as $key=>$point)
+                                        <li class="font-14 text-uppercase">
+                                            <span class="font-weight-bold float-left text-{{ isset($colorArray[$key]) ? $colorArray[$key] : $colorArray[rand(0,count($colorArray)-1)] }}">
+                                                <i class="fa fa-angle-double-right " aria-hidden="true"></i>
+                                            </span>
+                                            <span class="ml-1 badge badge-{{ isset($colorArray[$key]) ? $colorArray[$key] : $colorArray[rand(0,count($colorArray)-1)] }}">
+                                                {{ implode(" ",explode("-",$point->framework_library)) }}
+                                            </span>
+                                        </li>
+                                        @endforeach
+                                    </ul>
+
                                 </div>
                             </div>
                         </div>

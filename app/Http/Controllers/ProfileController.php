@@ -47,7 +47,7 @@ class ProfileController extends Controller
      */
     public function index()
     {
-
+        //todo skill migration has chaged. i need to migrate and apply the changes for status and cache check for active status with egar loading..
         $profile =  cache()->remember('profile', 60 * 60 * 24, function () {
             return Profile::where('email', 'alamin.cse15@gmail.com')->with(['experiences', 'skills'])->first();
         });
