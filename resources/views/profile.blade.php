@@ -110,7 +110,7 @@
 
                                 @php
 
-                                $colorArray = ['success','primary','info'];
+                                $colorArray = ['primary','success','info'];
 
                                 @endphp
                                 <button class="mt-2 mb-1 btn btn-sm btn-outline-{{ isset($colorArray[$key]) ? $colorArray[$key] : $colorArray[0] }} text-white {{ $experience->date_to ? '' : 'active show' }}" id="v-pills-{{ strtolower(substr($experience->designation,0,2).substr($experience->company_name,0,3)).md5($experience->designation) }}-tab" data-toggle="pill" href="#v-pills-{{ strtolower(substr($experience->designation,0,2).substr($experience->company_name,0,3)).md5($experience->designation) }}" role="tab" aria-controls="v-pills-{{ strtolower(substr($experience->designation,0,2).substr($experience->company_name,0,3)).md5($experience->designation) }}" aria-selected="{{ $experience->date_to ? 'true' : 'false' }}">
@@ -137,7 +137,7 @@
                                             <p class="font-15"><span><b>{{ $experience->designation }} </b></span> | {{ $experience->date_from ? date('F Y',strtotime($experience->date_from)) : '' }} - {{ $experience->date_to ? date('F Y',strtotime($experience->date_to)):'PRESENT' }}</p>
                                         </div>
                                         <div class="card-body">
-                                            <div class="font-14">
+                                            <div class="font-14 experience-desc">
                                                 {!! $experience->job_responsibility !!}
                                             </div>
                                             <ul class="nav justify-content-center">
@@ -185,26 +185,23 @@
                     <div class="row">
                         @foreach($profile->skills->groupBy('type') as $key=>$skill)
                         <div class="col-md-4 mt-2 mb-2">
-                            <div class="card mb-2" style="height: 100%">
-                                <div class="card-body mt-2">
-                                    <div class="card-title text-uppercase font-14 font-weight-bold text-center">
+                            <div class="card" style="height: 100%">
+                                <div class="card-body mt-2 bg-dark">
+                                    <div class="card-title text-uppercase font-14 font-weight-bold text-center text-white">
                                         <span class="border-bottom border-success">{{$key}}</span>
                                     </div>
-                                    <ul style="list-style-type:none">
+                                    <ul style="list-style-type:none;margin-left:-20px;">
                                         @php
 
-                                        $colorArray = ['primary','dark'];
-                                        shuffle($colorArray);
+                                        $colorArray = ['success','primary','success','info'];
 
                                         @endphp
                                         @foreach($skill as $key=>$point)
-                                        <li class="font-14 text-uppercase">
-                                            <span class="font-weight-bold float-left text-{{ isset($colorArray[$key]) ? $colorArray[$key] : $colorArray[rand(0,count($colorArray)-1)] }}">
-                                                <i class="fa fa-angle-double-right " aria-hidden="true"></i>
-                                            </span>
-                                            <span class="ml-1 badge badge-{{ isset($colorArray[$key]) ? $colorArray[$key] : $colorArray[rand(0,count($colorArray)-1)] }}">
-                                                {{ implode(" ",explode("-",$point->framework_library)) }}
-                                            </span>
+                                        <li class="font-13">
+                                            <button style="width: 100%;" class="text-uppercase text-justify mt-1 mb-1 btn btn-sm btn-outline-{{ isset($colorArray[$key]) ? $colorArray[$key] : $colorArray[rand(0,count($colorArray)-1)] }} text-white {{ $loop->first ? '' : ''}}">
+                                                <span class="foat-left text-white"><i class="fa fa-angle-double-right " aria-hidden="true"></i></span>
+                                                <span class="font-13"><b>{{ implode(" ",explode("-",$point->framework_library)) }}</b></span>
+                                            </button>
                                         </li>
                                         @endforeach
                                     </ul>
