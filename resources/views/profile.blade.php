@@ -96,7 +96,7 @@
         <div class="col-md-12">
             <div class="row">
                 <div class="col-md-12">
-                    <h4 class="mb-4 mt-4 text-center"><span class="border-bottom-3">Experience</span></h4>
+                    <h4 class="mb-4 mt-4 text-center"><span class="border-bottom-3">Experience - ({{ $totalYearOfExperience }}) {{ $totalYearOfExperience > 1 ? 'Years' : 'Years' }}</span></h4>
                 </div>
             </div>
             <div class="card">

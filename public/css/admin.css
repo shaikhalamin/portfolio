@@ -28,6 +28,10 @@ html,body {
     font-size: 13px;
 }
 
+.font-14{
+  font-size: 14px;
+}
+
   .custom-btn-warning{
     background-color:#ffc107 !important;
     border-color: #ffc107 !important;

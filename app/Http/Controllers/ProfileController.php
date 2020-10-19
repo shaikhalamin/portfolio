@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileRequest;
 use App\Profile;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Str;
@@ -52,9 +53,18 @@ class ProfileController extends Controller
             return Profile::where('email', 'alamin.cse15@gmail.com')->with(['experiences', 'skills'])->first();
         });
 
-        // dd($profile->skills->groupBy('type'));
 
-        return view('profile', compact('profile'));
+        $totalYearOfExperience = 0;
+
+        if (isset($profile->experiences) && !is_null($profile->experiences)) {
+            $date = Carbon::parse($profile->experiences->min('date_from') . " 12:00:00");
+            $now = Carbon::now();
+
+            $totalYearOfExperience =  round($date->floatDiffInYears($now), 1);
+        }
+
+
+        return view('profile', compact('profile', 'totalYearOfExperience'));
     }
 
     public function indexAdmin()
