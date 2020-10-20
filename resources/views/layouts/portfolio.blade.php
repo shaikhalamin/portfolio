@@ -34,7 +34,7 @@
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-sm navbar-white mb-0" style="background-color: #000;">
+        <nav class="navbar navbar-expand-sm navbar-white mb-0" style="background-color: #272732;">
             <div class="container">
                 <a href="/" class="text-white navbar-brand">
                     <h2 class="navbar-brand text-white mt-1" style="font-size: 34px;">
