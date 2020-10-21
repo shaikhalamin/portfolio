@@ -28,7 +28,7 @@
 
 @section('content')
 
-<div class="jumbotron" id="particles-js" style="border-radius: 0px; background-image:url('/assets/img/bg.png'); background-position: center center; background-repeat: no-repeat; background-size: cover;">
+<div class="jumbotron" id="particles-js" style="border-radius: 0px;background-color:#2a8b9d;/* background-image:url('/assets/img/bg.jpg'); background-position: center center; background-repeat: no-repeat; background-size: cover; */">
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">

@@ -34,12 +34,10 @@
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-sm navbar-white mb-0" style="background-color: #272732;">
+        <nav class="navbar navbar-expand-sm navbar-white mb-0" style="background-color: rgb(64, 65, 90);">
             <div class="container">
-                <a href="/" class="text-white navbar-brand">
-                    <h2 class="navbar-brand text-white mt-1" style="font-size: 34px;">
-                        <span class="" style="color: #17A2C2!important;">Shaikh</span> Dev
-                    </h2>
+                <a href="/" class="text-white navbar-brand font-weight-bold">
+                    <span class="">Shaikh</span> Dev
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
