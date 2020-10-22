@@ -53,4 +53,38 @@ html,body {
 .custom-text-info{
     color: #17A2C2!important;
 }
+
+.bg-red-light{
+    background-color: #f16529 !important;
+}
+.bg-info-light{
+    background-color: #0070BC !important;
+}
+.bg-purple-light{
+    background-color: #5a69a6 !important;
+}
+.bg-orange-light{
+    background-color: #dd8e3a !important;
+}
+.bg-primary-light{
+    background-color: #1169ae !important;
+}
+.bg-infodeep-light{
+    background-color: #00bed6 !important;
+}
+.bg-dark-light{
+    background-color: #333 !important;
+}
+.bg-orangedeep-light{
+    background-color: #E76F0A !important;
+}
+.bg-purpledeep-light{
+    background-color: #c7009a !important;
+}
+.bg-infooriented-light{
+    background-color: #2aa9e0 !important;
+}
+.bg-success-light{
+    background-color: #369750 !important;
+}
   

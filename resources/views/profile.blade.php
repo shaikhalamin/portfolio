@@ -28,7 +28,7 @@
 
 @section('content')
 
-<div class="jumbotron" id="particles-js" style="border-radius: 0px;background-color:#2a8b9d;/* background-image:url('/assets/img/bg.jpg'); background-position: center center; background-repeat: no-repeat; background-size: cover; */">
+<div class="jumbotron" id="particles-js" style="border-radius: 0px;background-color: rgba(43, 191, 217, 0.90);/* background-image:url('/assets/img/bg.jpg'); background-position: center center; background-repeat: no-repeat; background-size: cover; */">
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
@@ -37,16 +37,16 @@
 
                 @if(!is_null($profile))
                 <p class="mt-2 mb-2">
-                    <i class="fa fa-envelope-o mr-1" aria-hidden="false" style="font-size: 18px; color:rgb(255, 255, 255)"></i>
+                    <i class="fa fa-envelope-o mr-1" aria-hidden="false" style="font-size: 18px; color:#fff"></i>
                     <span class="text-white font-18">{{ $profile ? $profile->email : '' }}</span>
                 </p>
                 <div class="row">
-                    <div class="col-md-6 offset-md-3 mb-3 mt-2"><a href="{{ route('profiles.download_cv',['profile_id'=> $profile ? $profile->id : 0]) }}" class="btn btn-sm btn-outline-info text-white" target="_blank" rel="noopener noreferrer">Download CV</a><button type="button" class="btn btn-sm btn-outline-danger text-white ml-2 custom-btn-warning">Hire Me</button></div>
+                    <div class="col-md-6 offset-md-3 mb-3 mt-2"><a href="{{ route('profiles.download_cv',['profile_id'=> $profile ? $profile->id : 0]) }}" class="btn btn-sm btn-dark text-white" target="_blank" rel="noopener noreferrer">Download CV</a><button type="button" class="btn btn-sm btn-dark ml-2 text-white">Hire Me</button></div>
                 </div>
                 <ul class="nav justify-content-center">
-                    <li class="nav-item"><a class="btn btn-sm" target="_blank" href="{{ $profile ? $profile->linkedin_profile_path : '/' }}"><i class="fa fa-linkedin-square" aria-hidden="false" style="font-size: 25px; color:rgb(255, 255, 255)"></i></a></li>
-                    <li class="nav-item"><a class="btn btn-sm" target="_blank" href="{{ $profile ? $profile->github_profile_path : '/' }}"><i class="fa fa-github-square " aria-hidden="true" style="font-size: 25px;color:rgb(255, 255, 255) "></i></a></li>
-                    <li class="nav-item"><a class="btn btn-sm" target="_blank" href="{{ $profile ? $profile->twitter_profile_path : '/' }}"><i class="fa fa-twitter-square" aria-hidden="true" style="font-size: 25px; color:rgb(255, 255, 255)"></i></a></li>
+                    <li class="nav-item"><a class="btn btn-sm" target="_blank" href="{{ $profile ? $profile->linkedin_profile_path : '/' }}"><i class="fa fa-linkedin-square" aria-hidden="false" style="font-size: 25px; color:#fff"></i></a></li>
+                    <li class="nav-item"><a class="btn btn-sm" target="_blank" href="{{ $profile ? $profile->github_profile_path : '/' }}"><i class="fa fa-github-square " aria-hidden="true" style="font-size: 25px;color:#fff "></i></a></li>
+                    <li class="nav-item"><a class="btn btn-sm" target="_blank" href="{{ $profile ? $profile->twitter_profile_path : '/' }}"><i class="fa fa-twitter-square" aria-hidden="true" style="font-size: 25px; color:#fff"></i></a></li>
                 </ul>
                 @endif
 
@@ -114,8 +114,11 @@
 
                                 @endphp
                                 <button class="mt-2 mb-1 btn btn-sm btn-outline-{{ isset($colorArray[$key]) ? $colorArray[$key] : $colorArray[0] }} text-white {{ $experience->date_to ? '' : 'active show' }}" id="v-pills-{{ strtolower(substr($experience->designation,0,2).substr($experience->company_name,0,3)).md5($experience->designation) }}-tab" data-toggle="pill" href="#v-pills-{{ strtolower(substr($experience->designation,0,2).substr($experience->company_name,0,3)).md5($experience->designation) }}" role="tab" aria-controls="v-pills-{{ strtolower(substr($experience->designation,0,2).substr($experience->company_name,0,3)).md5($experience->designation) }}" aria-selected="{{ $experience->date_to ? 'true' : 'false' }}">
-                                    <span class="font-14"><b>{{ $experience->designation }}</b></span> - <span class="font-13"><a class="text-white" target="_blank" href="{{ $experience->company_website }}"><b>{{ $experience->company_name }}</b></a></span>
-                                    <span class="float-right text-white"><i class="fa fa-angle-double-right " aria-hidden="true"></i></span>
+                                    <span class="font-14">
+                                        <b>{{ $experience->designation }}</b> -
+                                        <span class="font-13"><a class="text-white" target="_blank" href="{{ $experience->company_website }}"><b>{{ $experience->company_name }}</b></a></span>
+                                        <span class="float-right text-white"><i class="fa fa-angle-double-right " aria-hidden="true"></i></span>
+                                    </span>
                                 </button>
 
                                 @endif
@@ -186,19 +189,19 @@
                         @foreach($profile->skills->groupBy('type') as $key=>$skill)
                         <div class="col-md-4 mt-2 mb-2">
                             <div class="card" style="height: 100%">
-                                <div class="card-body mt-2 bg-dark">
-                                    <div class="card-title text-uppercase font-14 font-weight-bold text-center text-white">
+                                <div class="card-body mt-2 bg-light">
+                                    <div class="card-title text-uppercase font-14 font-weight-bold text-center text-dark">
                                         <span class="border-bottom border-success">{{$key}}</span>
                                     </div>
                                     <ul style="list-style-type:none;margin-left:-20px;">
                                         @php
 
-                                        $colorArray = ['success','primary','success','info'];
-
+                                        $colorArray = ['red','info','success','purple','orange','primary','infodeep','dark','orangedeep','purpledeep','infooriented'];
+                                        shuffle($colorArray);
                                         @endphp
                                         @foreach($skill as $key=>$point)
                                         <li class="font-13">
-                                            <button style="width: 100%;" class="text-uppercase text-justify mt-1 mb-1 btn btn-sm btn-outline-{{ isset($colorArray[$key]) ? $colorArray[$key] : $colorArray[rand(0,count($colorArray)-1)] }} text-white {{ $loop->first ? '' : ''}}">
+                                            <button style="width: 100%;" class="text-uppercase text-justify mt-1 mb-1 btn btn-sm bg-{{ isset($colorArray[$key]) ? $colorArray[$key] : $colorArray[rand(0,count($colorArray)-1)] }}-light text-white {{ $loop->first ? 'active' : 'active'}}">
                                                 <span class="foat-left text-white"><i class="fa fa-angle-double-right " aria-hidden="true"></i></span>
                                                 <span class="font-13"><b>{{ implode(" ",explode("-",$point->framework_library)) }}</b></span>
                                             </button>
