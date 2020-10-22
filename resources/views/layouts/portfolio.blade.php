@@ -37,7 +37,7 @@
         <nav class="navbar navbar-expand-sm navbar-white mb-0" style="background-color: rgb(64, 65, 90);">
             <div class="container">
                 <a href="/" class="text-white navbar-brand font-weight-bold">
-                    <span class="">Shaikh</span> Dev
+                    <span class="">@yield('full_name')</span>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>

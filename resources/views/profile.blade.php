@@ -25,6 +25,9 @@
 @endsection
 
 
+@section('full_name')
+{{ $profile ? $profile->full_name : '' }}
+@endsection
 
 @section('content')
 
@@ -37,16 +40,16 @@
 
                 @if(!is_null($profile))
                 <p class="mt-2 mb-2">
-                    <i class="fa fa-envelope-o mr-1" aria-hidden="false" style="font-size: 18px; color:#fff"></i>
+                    <i class="fa fa-envelope-o mr-1 round-icon" aria-hidden="false" style="font-size: 18px; color:#fff"></i>
                     <span class="text-white font-18">{{ $profile ? $profile->email : '' }}</span>
                 </p>
                 <div class="row">
                     <div class="col-md-6 offset-md-3 mb-3 mt-2"><a href="{{ route('profiles.download_cv',['profile_id'=> $profile ? $profile->id : 0]) }}" class="btn btn-sm btn-dark text-white" target="_blank" rel="noopener noreferrer">Download CV</a><button type="button" class="btn btn-sm btn-dark ml-2 text-white">Hire Me</button></div>
                 </div>
                 <ul class="nav justify-content-center">
-                    <li class="nav-item"><a class="btn btn-sm" target="_blank" href="{{ $profile ? $profile->linkedin_profile_path : '/' }}"><i class="fa fa-linkedin-square" aria-hidden="false" style="font-size: 25px; color:#fff"></i></a></li>
-                    <li class="nav-item"><a class="btn btn-sm" target="_blank" href="{{ $profile ? $profile->github_profile_path : '/' }}"><i class="fa fa-github-square " aria-hidden="true" style="font-size: 25px;color:#fff "></i></a></li>
-                    <li class="nav-item"><a class="btn btn-sm" target="_blank" href="{{ $profile ? $profile->twitter_profile_path : '/' }}"><i class="fa fa-twitter-square" aria-hidden="true" style="font-size: 25px; color:#fff"></i></a></li>
+                    <li class="nav-item"><a class="btn btn-sm" target="_blank" href="{{ $profile ? $profile->linkedin_profile_path : '/' }}"><i class="fa fa-linkedin-square round-icon" aria-hidden="false" style="font-size: 25px; color:#fff"></i></a></li>
+                    <li class="nav-item"><a class="btn btn-sm" target="_blank" href="{{ $profile ? $profile->github_profile_path : '/' }}"><i class="fa fa-github-square round-icon" aria-hidden="true" style="font-size: 25px;color:#fff "></i></a></li>
+                    <li class="nav-item"><a class="btn btn-sm" target="_blank" href="{{ $profile ? $profile->twitter_profile_path : '/' }}"><i class="fa fa-twitter-square round-icon" aria-hidden="true" style="font-size: 25px; color:#fff"></i></a></li>
                 </ul>
                 @endif
 

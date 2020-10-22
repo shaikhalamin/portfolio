@@ -7,6 +7,14 @@ html,body {
     overflow-x: hidden;
 }
 
+i.round-icon{
+    display: inline-block;
+    border-radius: 60px;
+    box-shadow: 0px 0px 2px #000;
+    padding: 0.5em 0.6em;
+  
+  }
+
 .i-am {
     border-top: 3px solid #17a2b8;
 }
