@@ -28,46 +28,23 @@
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-md-6">
                                 <label for="main_stack" class="">Main Stack</label>
                                 <input type="text" name="main_stack" value="{{ old('main_stack') }}" placeholder="like php or c# or js or sql" class="form-control @error('main_stack') is-invalid @enderror " id="main_stack">
                                 @error('main_stack')
                                 <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-md-6">
                                 <label for="framework_library" class="">Framework Library</label>
                                 <input type="text" name="framework_library" value="{{ old('framework_library') }}" class="form-control @error('framework_library') is-invalid @enderror " id="framework_library">
                                 @error('framework_library')
                                 <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <div class="form-group col-md-4">
-                                <label for="framework_1" class="">First Framework</label>
-                                <input type="text" name="framework_1" value="{{ old('framework_1') }}" class="form-control @error('framework_1') is-invalid @enderror " id="phone">
-                                @error('framework_1')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
                         </div>
 
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="framework_2" class="">Second Framework</label>
-                                <input type="text" name="framework_2" value="{{ old('framework_2') }}" class="form-control @error('framework_2') is-invalid @enderror " id="framework_2">
-                                @error('framework_2')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="framework_3">Third Framework</label>
-                                <input type="text" name="framework_3" value="{{ old('framework_3') }}" class="form-control @error('framework_3') is-invalid @enderror " id="framework_3">
-                                @error('framework_3')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
 
-                        </div>
 
                         <div class="form-row float-right">
                             <a href="{{ route('skills.index') }}" class="btn btn-sm btn-outline-danger mr-2">Cancel</a>

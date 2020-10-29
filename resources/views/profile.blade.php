@@ -31,7 +31,7 @@
 
 @section('content')
 
-<div class="jumbotron" id="particles-js" style="border-radius: 0px;background-color: rgba(43, 191, 217, 0.90);/* background-image:url('/assets/img/bg.jpg'); background-position: center center; background-repeat: no-repeat; background-size: cover; */">
+<div class="jumbotron" id="particles-js" style="border-radius: 0px;background-color: rgb(66 165 183);/* background-image:url('/assets/img/bg.jpg'); background-position: center center; background-repeat: no-repeat; background-size: cover; */">
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
@@ -93,7 +93,7 @@
     @endif
 </section>
 
-<div class="row bg-light mb-5">
+<div class="row bg-light mb-2">
     @if(!is_null($profile))
     <div class="container">
         <div class="col-md-12">
@@ -199,12 +199,14 @@
                                     <ul style="list-style-type:none;margin-left:-20px;">
                                         @php
 
-                                        $colorArray = ['red','info','success','purple','orange','primary','infodeep','dark','orangedeep','purpledeep','infooriented'];
+                                        $colorArray = ['info','success','infodeep','primary','infooriented','purple','orange','dark','orangedeep','red'];
+                                        $firstRow = ['info','purple','success','infodeep','primary','infooriented'];
+                                        shuffle($firstRow);
                                         shuffle($colorArray);
                                         @endphp
                                         @foreach($skill as $key=>$point)
                                         <li class="font-13">
-                                            <button style="width: 100%;" class="text-uppercase text-justify mt-1 mb-1 btn btn-sm bg-{{ isset($colorArray[$key]) ? $colorArray[$key] : $colorArray[rand(0,count($colorArray)-1)] }}-light text-white {{ $loop->first ? 'active' : 'active'}}">
+                                            <button style="width: 100%;" class="text-uppercase text-justify mt-1 mb-1 btn btn-sm bg-{{ (isset($colorArray[$key]) && $loop->first) ? $firstRow[$key] : (isset($colorArray[$key]) ? $colorArray[$key] : $colorArray[rand(0,count($colorArray)-1)]) }}-light text-white {{ $loop->first ? 'active' : 'active'}}">
                                                 <span class="foat-left text-white"><i class="fa fa-angle-double-right " aria-hidden="true"></i></span>
                                                 <span class="font-13"><b>{{ implode(" ",explode("-",$point->framework_library)) }}</b></span>
                                             </button>

@@ -1,5 +1,6 @@
 <?php
 
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -13,6 +14,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/test', function () {
+    $pdf = PDF::loadView('dom-test');
+    return $pdf->download('invoice.pdf');
+});
 
 Route::get('/', 'ProfileController@index')->name('profile');
 

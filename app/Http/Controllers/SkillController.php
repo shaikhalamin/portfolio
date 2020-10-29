@@ -49,10 +49,8 @@ class SkillController extends Controller
         $skill->type = $request->type;
         $skill->functional_type = $request->functional_type;
         $skill->main_stack = $request->main_stack;
-        $skill->framework_1 = $request->framework_1;
-        $skill->framework_2 = $request->framework_2;
-        $skill->framework_3 = $request->framework_3;
         $skill->framework_library = $request->framework_library;
+        $skill->status = 1;
         $skill->profile_id = auth()->user()->profile ? auth()->user()->profile->id : 0;
         $skill->user_id = auth()->user()->id;
 
@@ -100,9 +98,6 @@ class SkillController extends Controller
         $skill->type = $request->type;
         $skill->functional_type = $request->functional_type;
         $skill->main_stack = $request->main_stack;
-        $skill->framework_1 = $request->framework_1;
-        $skill->framework_2 = $request->framework_2;
-        $skill->framework_3 = $request->framework_3;
         $skill->framework_library = $request->framework_library;
         $skill->profile_id = auth()->user()->profile ? auth()->user()->profile->id : 1;
         $skill->user_id = auth()->user()->id;
