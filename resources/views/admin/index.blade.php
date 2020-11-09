@@ -54,7 +54,7 @@
                             <div class="card">
                                 <div class="card-body custom-btn-warning">
                                     <h4 class="font-14 text-uppercase text-white font-bold">
-                                        <a class="text-white" href="{{ route('admin.index') }}">
+                                        <a class="text-white" href="{{ route('portfolios.index') }}">
                                             <span class="float-left text-white">
                                                 <i class="fa fa-archive" aria-hidden="true"></i> Portfolios
                                                 <span class="ml-1 badge badge-light">{{ isset($profiles->portfolios) ? $profiles->portfolios->count() : 0 }}</span>

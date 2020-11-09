@@ -35,3 +35,4 @@ Route::resource('profiles', 'ProfileController')->except(['index']);
 
 Route::resource('experiences', 'ExperienceController');
 Route::resource('skills', 'SkillController');
+Route::resource('portfolios', 'PortfolioController');

@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class PortfolioController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware(['auth', 'profile_cheker']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +19,9 @@ class PortfolioController extends Controller
      */
     public function index()
     {
-        //
+        $profileId = isset(auth()->user()->profile) ? auth()->user()->profile->id : 0;
+        $portfolios =  Portfolio::where('profile_id', $profileId)->orderBy('created_at', 'desc')->paginate(8);
+        return view('admin.portfolio.index', compact('portfolios'));
     }
 
     /**
@@ -24,7 +31,8 @@ class PortfolioController extends Controller
      */
     public function create()
     {
-        //
+
+        return view('admin.skill.create');
     }
 
     /**
